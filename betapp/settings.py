@@ -58,6 +58,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'betapp.urls'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 TEMPLATES = [
     {
@@ -75,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wsgi.application'
+WSGI_APPLICATION = 'betapp.wsgi.application'
 
 
 # Database
