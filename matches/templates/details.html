@@ -1,0 +1,497 @@
+{% load static custom_filters %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page_title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="{% static 'logo.png' %}" type="image/png">
+  <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9818130828655195"
+     crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      background-color: #f4f4f4;
+    }
+    /* HEADER */
+    .my-header {
+      background-color: #000; /* Siyah arkaplan */
+      padding: 1rem 0;
+    }
+    .my-logo {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .my-logo img {
+      height: 60px;
+      width: 200px;
+    }
+    .my-nav .nav-link {
+      color: #fff !important;
+      text-transform: uppercase;
+      font-family: Arial, sans-serif;
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 1rem;
+    }
+    .my-nav .nav-link:hover {
+      color: #ddd !important;
+    }
+
+    /* MAÇ HEADER */
+    .match-header {
+      background-color: #222;
+      color: #fff;
+      padding: 20px 0;
+    }
+    .team-logo {
+      max-height: 100px;
+      width: auto;
+    }
+    .team-name {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin: 0;
+    }
+    .score {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    .match-date {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+    .progress {
+      height: 35px;
+    }
+    .progress-bar {
+      font-size: 1rem;
+      line-height: 35px;
+    }
+
+    /* FORM-CARD (KART TASARIMI) */
+    .form-card {
+      max-width: 30rem;
+      margin: 0 auto;
+    }
+    .form-card .list-group-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: none;
+      padding: 0.5rem 0;
+    }
+    .form-card .list-group-item + .list-group-item {
+      border-top: 1px solid #e0e0e0;
+    }
+    .form-card .match-info {
+      flex: 1;
+      font-size: 0.95rem;
+    }
+    .form-card .badge {
+      font-size: 0.85rem;
+    }
+
+    /* FOOTER */
+    .footer {
+      background-color: black;
+      color: #fff;
+      padding: 2rem 0;
+      margin-top: 2rem;
+    }
+    .footer h5 {
+      color: #fff;
+    }
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: #ccc;
+    }
+    .stat-box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  min-width: 5rem;
+  min-height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.stat-box .percent {
+  font-size: 1.2rem;
+}
+.stat-box .label {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="my-header">
+    <div class="container d-flex align-items-center justify-content-between">
+      <!-- LOGO -->
+      <div class="my-logo">
+        <!-- Örneğin, <img src="{% static 'images/logo.png' %}" alt="Logo"> -->
+      </div>
+      <!-- NAVBAR -->
+      <nav>
+        <ul class="nav my-nav">
+          <li class="nav-item">
+            <a href="/home" class="nav-link">Anasayfa</a>
+          </li>
+          <li class="nav-item">
+            <a href="/matches" class="nav-link">Bülten</a>
+          </li>
+          <li class="nav-item">
+            <a href="/home#bizeulas" class="nav-link">İletişim</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Maç Başlık ve Özet Bölümü -->
+  <div class="match-header text-center">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Ev Sahibi -->
+        <div class="col-md-4 text-end">
+          <div class="d-flex justify-content-end align-items-center">
+            <img src="{% static 'logos/'|add:match.home_team_logo %}" alt="{{ match.HomeTeam }} Logo" class="team-logo me-2">
+            <p class="team-name mb-0">{{ match.HomeTeam }}</p>
+          </div>
+        </div>
+        <!-- Skor ve Tarih -->
+        <div class="col-md-4">
+          <div class="score">VS</div>
+          <b><p class="match-date">{{ match.display_date|to_turkish_date }} - {{ match.TIME }}</p></b>
+        </div>
+        <!-- Deplasman -->
+        <div class="col-md-4 text-start">
+          <div class="d-flex justify-content-start align-items-center">
+            <p class="team-name mb-0">{{ match.AwayTeam }}</p>
+            <img src="{% static 'logos/'|add:match.away_team_logo %}" alt="{{ match.AwayTeam }} Logo" class="team-logo ms-2">
+          </div>
+        </div>
+      </div>
+      <!-- Maç Sonucu Olasılıkları (Progress Bar) -->
+      <div class="row mt-3">
+        <div class="col">
+          <div class="progress">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: {{ match.MS1 }}%;" aria-valuenow="{{ match.MS1 }}" aria-valuemin="0" aria-valuemax="100">
+              MS1: {{ match.MS1 }}%
+            </div>
+            <div class="progress-bar bg-secondary" role="progressbar" style="width: {{ match.MSX }}%;" aria-valuenow="{{ match.MSX }}" aria-valuemin="0" aria-valuemax="100">
+              MSX: {{ match.MSX }}%
+            </div>
+            <div class="progress-bar bg-primary" role="progressbar" style="width: {{ match.MS2 }}%;" aria-valuenow="{{ match.MS2 }}" aria-valuemin="0" aria-valuemax="100">
+              MS2: {{ match.MS2 }}%
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ana İçerik -->
+  <div class="container mt-4">
+    <div class="row g-4">
+      <!-- 2.5 Üst Olasılığı -->
+      <div class="col-md-6">
+        <h4 class="fw-bold text-uppercase text-center">2.5 Gol Üst Olasılığı</h4>
+        <div class="card form-card shadow-sm mx-auto">
+          <div class="card-body text-center">
+            <span class="match-info" style="font-size: 2rem; font-weight: bold; color: rgb(228, 104, 104);">
+              %{{ match.over2_5|floatformat:2 }} 
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- KG VAR Olasılığı -->
+      <div class="col-md-6">
+        <h4 class="fw-bold text-uppercase text-center">KG VAR Olasılığı</h4>
+        <div class="card form-card shadow-sm mx-auto">
+          <div class="card-body text-center">
+            <span class="match-info" style="font-size: 2rem; font-weight: bold; color: rgb(228, 104, 104);">
+              %{{ match.KG|floatformat:2 }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Sekmeli tablo/grid (Footer üstünde) -->
+<div class="container mt-5">
+  <!-- Sekme Başlıkları (Nav Pills) -->
+  <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="pills-skorlar-tab" data-bs-toggle="pill" data-bs-target="#pills-skorlar" type="button" role="tab" aria-controls="pills-skorlar" aria-selected="true">Skorlar</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-iyms-tab" data-bs-toggle="pill" data-bs-target="#pills-iyms" type="button" role="tab" aria-controls="pills-iyms" aria-selected="false">İY/MS</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-ilkyari-tab" data-bs-toggle="pill" data-bs-target="#pills-ilkyari" type="button" role="tab" aria-controls="pills-ilkyari" aria-selected="false">İlk Yarı Skor</button>
+    </li>
+    
+  </ul>
+
+  <!-- Sekme İçerikleri -->
+  <div class="tab-content" id="pills-tabContent">
+    <!-- SKORLAR Sekmesi -->
+    <div class="tab-pane fade show active" id="pills-skorlar" role="tabpanel" aria-labelledby="pills-skorlar-tab">
+      <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3 justify-content-center">
+        <!-- scores_with_pct verilerini döngü ile yazdır -->
+        {% for score, count, pct in match.scores_with_pct|slice:":6" %}
+        <div class="col">
+          <div class="stat-box p-3 text-center">
+            <!-- Yüzdelik Değer -->
+            <div class="percent fw-bold badge bg-warning">
+              %{{ pct|floatformat:2 }}
+            </div>
+            <!-- Skor Bilgisi -->
+            <div class="percent text-black fw-bold">
+              {{ score.0 }}-{{ score.1 }}
+            </div>
+            <div class="label" style="color: grey; size: 10px;">
+              ({{ count }} Kere)
+            </div>
+            
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+  <div class="tab-content" id="pills-tabContent">
+    <!-- İY/MS Sekmesi -->
+    <div class="tab-pane fade" id="pills-iyms" role="tabpanel" aria-labelledby="pills-iyms-tab">
+      <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3 justify-content-center">
+        <div class="col">
+          <div class="stat-box p-3 text-center">
+            
+            <div class="percent fw-bold badge bg-warning">%{{match.home_to_home_pct}}</div>
+            <div class="label">İY 1 / MS 1</div>
+            
+          </div>
+        </div>
+        <div class="col">
+          <div class="stat-box p-3 text-center">
+            
+            <div class="percent fw-bold badge bg-warning">%{{match.home_to_away_pct}}</div>
+            <div class="label">İY 1 / MS 2</div>
+            
+          </div>
+        </div>
+        <div class="col">
+          <div class="stat-box p-3 text-center">
+            <div class="percent fw-bold badge bg-warning">%{{match.away_to_away_pct}}</div>
+            <div class="label">İY 2 / MS 2</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="stat-box p-3 text-center">
+            <div class="percent fw-bold badge bg-warning">%{{match.away_to_home_pct}}</div>
+            <div class="label">İY 2 / MS 1</div>
+          </div>
+        </div>
+        
+      </div>
+        <!-- ... -->
+      </div>
+    </div>
+    <div class="tab-content" id="pills-tabContent">
+    <!-- İlk Yarı Skor Sekmesi -->
+    <div class="tab-pane fade" id="pills-ilkyari" role="tabpanel" aria-labelledby="pills-ilkyari-tab">
+      <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3 justify-content-center">
+        {% for score, count, pct in match.half_scores_with_pct|slice:":6" %}
+        <div class="col">
+          <div class="stat-box p-3 text-center">
+            <!-- Yüzdelik Değer -->
+            <div class="percent fw-bold badge bg-warning">
+              %{{ pct|floatformat:2 }}
+            </div>
+            <!-- Skor Bilgisi -->
+            <div class="percent text-black fw-bold">
+              {{ score.0 }}-{{ score.1 }}
+            </div>
+            <div class="label" style="color: grey; size: 10px;">
+              ({{ count }} Kere )
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  
+
+    <!-- Maç Sonu Gol Sekmesi -->
+   
+
+    <!-- Skor Dağılımları -->
+    <div class="row g-4 mt-4">
+      <!-- Maç Sonu Skor Dağılımı -->
+      <div class="col-md-6">
+        <h4>Maç Sonu Skor Dağılımı Tahminleri</h4>
+        <div class="card form-card shadow-sm">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              {% for score, count, pct in match.scores_with_pct|slice:":5" %}
+              <li class="list-group-item">
+                <span class="match-info">
+                  {{ match.HomeTeam }} {{ score.0 }}-{{ score.1 }} {{ match.AwayTeam }}
+                </span>
+                <span class="badge bg-danger">%{{ pct|floatformat:2 }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- İlk Yarı Skor Dağılımı -->
+      <div class="col-md-6">
+        <h4>İlk Yarı Skor Dağılımı Tahminleri</h4>
+        <div class="card form-card shadow-sm">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              {% for score, count, pct in match.half_scores_with_pct|slice:":5" %}
+              <li class="list-group-item">
+                <span class="match-info">
+                  {{ match.HomeTeam }} {{ score.0 }}-{{ score.1 }} {{ match.AwayTeam }}
+                </span>
+                <span class="badge bg-primary">%{{ pct|floatformat:2 }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row g-4 mt-4">
+    <!-- Son 5 Maç -->
+    <div class="col-md-6">
+      <h4>Ev sahibi Son 5 Maç</h4>
+      <div class="card form-card shadow-sm">
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            {% for game in home_last5 %}
+            <li class="list-group-item p-1">
+              <table class="w-100">
+                <tr style="white-space: nowrap;">
+                  <!-- Ev Sahibi Takım (sol) -->
+                  <td class="text-start" style="width: 40%;">
+                    {{ game.home_team_name }}
+                  </td>
+                  <!-- Skor (orta) -->
+                  <td class="text-center" style="width: 20%;">
+                    {{ game.score.0 }}-{{ game.score.2 }}
+                  </td>
+                  <!-- Deplasman Takım (sağ) -->
+                  <td class="text-end" style="width: 40%;">
+                    {{ game.away_team_name }}
+                  </td>
+                </tr>
+              </table>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+      
+      <div class="col-md-6">
+        <h4>Deplasman Son 5 Maç</h4>
+        <div class="card form-card shadow-sm">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              {% for game in away_last5 %}
+              <li class="list-group-item p-1">
+                <table class="w-100">
+                  <tr style="white-space: nowrap;">
+                    <!-- Ev Sahibi Takım (sol) -->
+                    <td class="text-start" style="width: 40%;">
+                      {{ game.home_team_name }}
+                    </td>
+                    <!-- Skor (orta) -->
+                    <td class="text-center" style="width: 20%;">
+                      {{ game.score.0 }}-{{ game.score.2 }}
+                    </td>
+                    <!-- Deplasman Takım (sağ) -->
+                    <td class="text-end" style="width: 40%;">
+                      {{ game.away_team_name }}
+                    </td>
+                  </tr>
+                </table>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      </div>
+        
+
+  
+  <!-- Alt kısım: Benzer Maçlar / Süper Lig / Daha Fazla Yükle -->
+ 
+    
+</div>
+  <!-- FOOTER -->
+  <footer class="footer" style="background-color: #000000; padding: 1rem 0;">
+    <div class="container">
+      <div class="row">
+        <!-- Sol Sütun: UYARI & SORUMLULUK REDDİ -->
+        <div class="col-lg-6 col-md-6">
+          <div class="footer__option__item" style="border: 2px solid red; padding: 0.5rem; background-color: #ffe6e6; border-radius: 5%;">
+            <h4 class="text-danger" style="margin-bottom: 0.5rem;">UYARI &amp; SORUMLULUK REDDİ</h4>
+            <p class="" style="margin: 0; font-size: 0.9rem; color: black;">
+              Bu sitede yer alan veriler, tahminler ve analizler tamamen yapay zeka algoritmaları tarafından otomatik olarak oluşturulmaktadır. Sunulan içerikler, herhangi bir bahis, yatırım veya finansal karar vermeye yönelik öneri veya tavsiye niteliği taşımamaktadır. Kullanıcıların, bu içerikleri yalnızca eğlence amacıyla değerlendirmeleri ve kendi araştırmalarını yaparak sorumlu bahis oynamaları gerekmektedir. Site yönetimi, sunulan verilerden veya sonuçlardan kaynaklanabilecek herhangi bir zarardan, kayıptan ya da yasal sonuçtan kesinlikle sorumlu tutulamaz.
+            </p>
+          </div>
+        </div>
+        <!-- Sağ Sütun: Bize Ulaşın -->
+        <div class="col-lg-6 col-md-6">
+          <div class="footer__option__item text-end" style="padding: 0.5rem;">
+            <h5 class="text-white" style="margin-bottom: 0.5rem;">Bize Ulaşın</h5>
+            <p class="text-white" style="margin: 0; font-size: 0.9rem; ">Proje Beta Aşamasındadır. İstek ve öneriler için bize yazın.</p>
+            <form action="{% url 'newsletter' %}" method="POST" style="margin-top: 0.5rem; padding-right: 6rem;" class="align-items-center">
+              {% csrf_token %}
+              <textarea name="message" placeholder="Mesajınızı buraya yazın..." rows="3" required style="width: 90%;"></textarea>
+              <button type="submit" class="btn btn-primary mx-2 text-center" style="width: 16%;height: 90%;">
+                <i class="fa fa-send"></i> Gönder
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Alt Bilgi -->
+      <div class="footer__copyright mt-2">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <p class="text-white" style="margin: 0; font-size: 0.9rem;">
+              Copyright &copy;
+              <script>document.write(new Date().getFullYear());</script>
+              Tüm Hakları Saklıdır | Made by 
+              <a href="https://www.linkedin.com/in/furkanylmaz1/" target="_blank" style="color: aqua;">Furkan Yılmaz</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

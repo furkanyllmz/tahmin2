@@ -1,0 +1,8 @@
+celery==5.4.0
+Django==5.1.6
+matches==0.0.1
+matplotlib==3.10.0
+numpy==2.2.3
+pandas==2.2.3
+scikit_learn==1.6.1
+scipy==1.15.2

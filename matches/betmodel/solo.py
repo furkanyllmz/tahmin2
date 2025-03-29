@@ -1,0 +1,1025 @@
+import numpy as np
+import pandas as pd
+import subprocess
+import os
+import hashlib
+import re
+from matches.dateconvert import parse_date_only
+from matches.dateconvert import get_time
+from matches.models import MatchResult,GlobalTeam,PastMatches
+from pathlib import Path
+
+# sklearn
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+
+# Grafik için
+import matplotlib.pyplot as plt
+
+# Poisson (opsiyonel ek hesaplamalar için)
+import scipy.stats
+
+# Eğer XML -> CSV dönüşümünüz varsa (opsiyonel)
+
+# ----------------------------------------------------------------
+# 1) CSV Dosyalarını Yükle
+# ----------------------------------------------------------------
+
+# ----------------------------------------------------------------
+# 2) Eğer 'status' sütunu varsa, sadece "complete" statüsündeki maçları filtrele
+def generate_stable_id(home, away):
+    """
+    Ev sahibi takım, deplasman takımı ve maç tarihini kullanarak sabit bir id üretir.
+    """
+    unique_str = home+away
+    return hashlib.md5(unique_str.encode('utf-8')).hexdigest()[:8]
+def slugify_team_name(name):
+    # Basit bir slugify örneği
+    s = name.lower()
+    s = re.sub(r'[^a-z0-9]+', '-', s)
+    return s.strip('-')
+# ----------------------------------------------------------------
+def betprogram(df_teams, df_matches, fixture, league="",country=""):
+    teams_data = {}
+    for index, row in df_teams.iterrows():
+        t = row["team_name"]
+    
+        wins = row["wins"] if not pd.isna(row["wins"]) else 0
+        wins_home = row["wins_home"] if not pd.isna(row["wins_home"]) else 0
+        wins_away = row["wins_away"] if not pd.isna(row["wins_away"]) else 0
+        draws = row["draws"] if not pd.isna(row["draws"]) else 0
+        draws_home = row["draws_home"] if not pd.isna(row["draws_home"]) else 0
+        draws_away = row["draws_away"] if not pd.isna(row["draws_away"]) else 0
+        losses = row["losses"] if not pd.isna(row["losses"]) else 0
+        losses_home = row["losses_home"] if not pd.isna(row["losses_home"]) else 0
+        losses_away = row["losses_away"] if not pd.isna(row["losses_away"]) else 0
+        goals_scored = row["goals_scored"] if not pd.isna(row["goals_scored"]) else 0
+        goals_scored_home = row["goals_scored_home"] if not pd.isna(row["goals_scored_home"]) else 0
+        goals_scored_away = row["goals_scored_away"] if not pd.isna(row["goals_scored_away"]) else 0
+        corners_total = row["corners_total"] if not pd.isna(row["corners_total"]) else 0
+        corners_total_home = row["corners_total_home"] if not pd.isna(row["corners_total_home"]) else 0
+        corners_total_away = row["corners_total_away"] if not pd.isna(row["corners_total_away"]) else 0
+        cards_total = row["cards_total"] if not pd.isna(row["cards_total"]) else 0
+        cards_total_home = row["cards_total_home"] if not pd.isna(row["cards_total_home"]) else 0
+        cards_total_away = row["cards_total_away"] if not pd.isna(row["cards_total_away"]) else 0
+        average_possession = row["average_possession"] if not pd.isna(row["average_possession"]) else 0
+        average_possession_home = row["average_possession_home"] if not pd.isna(row["average_possession_home"]) else 0
+        average_possession_away = row["average_possession_away"] if not pd.isna(row["average_possession_away"]) else 0
+        shots = row["shots"] if not pd.isna(row["shots"]) else 0
+        shots_home = row["shots_home"] if not pd.isna(row["shots_home"]) else 0
+        shots_away = row["shots_away"] if not pd.isna(row["shots_away"]) else 0
+        shots_on_target = row["shots_on_target"] if not pd.isna(row["shots_on_target"]) else 0
+        shots_on_target_home = row["shots_on_target_home"] if not pd.isna(row["shots_on_target_home"]) else 0
+        shots_on_target_away = row["shots_on_target_away"] if not pd.isna(row["shots_on_target_away"]) else 0
+        goals_scored_half_time = row["goals_scored_half_time"] if not pd.isna(row["goals_scored_half_time"]) else 0
+        goals_scored_half_time_home = row["goals_scored_half_time_home"] if not pd.isna(row["goals_scored_half_time_home"]) else 0
+        goals_scored_half_time_away = row["goals_scored_half_time_away"] if not pd.isna(row["goals_scored_half_time_away"]) else 0
+        leading_at_half_time = row["leading_at_half_time"] if not pd.isna(row["leading_at_half_time"]) else 0
+        leading_at_half_time_home = row["leading_at_half_time_home"] if not pd.isna(row["leading_at_half_time_home"]) else 0
+        leading_at_half_time_away = row["leading_at_half_time_away"] if not pd.isna(row["leading_at_half_time_away"]) else 0
+        draw_at_half_time = row["draw_at_half_time"] if not pd.isna(row["draw_at_half_time"]) else 0
+        draw_at_half_time_home = row["draw_at_half_time_home"] if not pd.isna(row["draw_at_half_time_home"]) else 0
+        draw_at_half_time_away = row["draw_at_half_time_away"] if not pd.isna(row["draw_at_half_time_away"]) else 0
+        losing_at_half_time = row["losing_at_half_time"] if not pd.isna(row["losing_at_half_time"]) else 0
+        losing_at_half_time_home = row["losing_at_half_time_home"] if not pd.isna(row["losing_at_half_time_home"]) else 0
+        losing_at_half_time_away = row["losing_at_half_time_away"] if not pd.isna(row["losing_at_half_time_away"]) else 0
+        over05_count = row["over05_count"] if not pd.isna(row["over05_count"]) else 0
+        over15_count = row["over15_count"] if not pd.isna(row["over15_count"]) else 0
+        over25_count = row["over25_count"] if not pd.isna(row["over25_count"]) else 0
+        over35_count = row["over35_count"] if not pd.isna(row["over35_count"]) else 0
+        over05_count_home = row["over05_count_home"] if not pd.isna(row["over05_count_home"]) else 0
+        over15_count_home = row["over15_count_home"] if not pd.isna(row["over15_count_home"]) else 0
+        over25_count_home = row["over25_count_home"] if not pd.isna(row["over25_count_home"]) else 0
+        over35_count_home = row["over35_count_home"] if not pd.isna(row["over35_count_home"]) else 0
+        over45_count_home = row["over45_count_home"] if not pd.isna(row["over45_count_home"]) else 0
+        over55_count_home = row["over55_count_home"] if not pd.isna(row["over55_count_home"]) else 0
+        over05_count_away = row["over05_count_away"] if not pd.isna(row["over05_count_away"]) else 0
+        over15_count_away = row["over15_count_away"] if not pd.isna(row["over15_count_away"]) else 0
+        over25_count_away = row["over25_count_away"] if not pd.isna(row["over25_count_away"]) else 0
+        over35_count_away = row["over35_count_away"] if not pd.isna(row["over35_count_away"]) else 0
+        over05_count_half_time = row["over05_count_half_time"] if not pd.isna(row["over05_count_half_time"]) else 0
+        over15_count_half_time = row["over15_count_half_time"] if not pd.isna(row["over15_count_half_time"]) else 0
+        over25_count_half_time = row["over25_count_half_time"] if not pd.isna(row["over25_count_half_time"]) else 0
+        over05_count_half_time_home = row["over05_count_half_time_home"] if not pd.isna(row["over05_count_half_time_home"]) else 0
+        over15_count_half_time_home = row["over15_count_half_time_home"] if not pd.isna(row["over15_count_half_time_home"]) else 0
+        over25_count_half_time_home = row["over25_count_half_time_home"] if not pd.isna(row["over25_count_half_time_home"]) else 0
+        over05_count_half_time_away = row["over05_count_half_time_away"] if not pd.isna(row["over05_count_half_time_away"]) else 0
+        over15_count_half_time_away = row["over15_count_half_time_away"] if not pd.isna(row["over15_count_half_time_away"]) else 0
+        over25_count_half_time_away = row["over25_count_half_time_away"] if not pd.isna(row["over25_count_half_time_away"]) else 0
+        corners_per_match = row["corners_per_match"] if not pd.isna(row["corners_per_match"]) else 0
+        corners_per_match_home = row["corners_per_match_home"] if not pd.isna(row["corners_per_match_home"]) else 0
+        corners_per_match_away = row["corners_per_match_away"] if not pd.isna(row["corners_per_match_away"]) else 0
+        cards_per_match = row["cards_per_match"] if not pd.isna(row["cards_per_match"]) else 0
+        cards_per_match_home = row["cards_per_match_home"] if not pd.isna(row["cards_per_match_home"]) else 0
+        cards_per_match_away = row["cards_per_match_away"] if not pd.isna(row["cards_per_match_away"]) else 0
+        xg_for_avg_overall = row["xg_for_avg_overall"] if not pd.isna(row["xg_for_avg_overall"]) else 0
+        xg_for_avg_home = row["xg_for_avg_home"] if not pd.isna(row["xg_for_avg_home"]) else 0
+        xg_for_avg_away = row["xg_for_avg_away"] if not pd.isna(row["xg_for_avg_away"]) else 0
+        xg_against_avg_overall = row["xg_against_avg_overall"] if not pd.isna(row["xg_against_avg_overall"]) else 0
+        xg_against_avg_home = row["xg_against_avg_home"] if not pd.isna(row["xg_against_avg_home"]) else 0
+        xg_against_avg_away = row["xg_against_avg_away"] if not pd.isna(row["xg_against_avg_away"]) else 0
+    
+        teams_data[t] = {
+            "wins": wins,
+            "wins_home": wins_home,
+            "wins_away": wins_away,
+            "draws": draws,
+            "draws_home": draws_home,
+            "draws_away": draws_away,
+            "losses": losses,
+            "losses_home": losses_home,
+            "losses_away": losses_away,
+            "goals_scored": goals_scored,
+            "goals_scored_home": goals_scored_home,
+            "goals_scored_away": goals_scored_away,
+            "corners_total": corners_total,
+            "corners_total_home": corners_total_home,
+            "corners_total_away": corners_total_away,
+            "cards_total": cards_total,
+            "cards_total_home": cards_total_home,
+            "cards_total_away": cards_total_away,
+            "average_possession": average_possession,
+            "average_possession_home": average_possession_home,
+            "average_possession_away": average_possession_away,
+            "shots": shots,
+            "shots_home": shots_home,
+            "shots_away": shots_away,
+            "shots_on_target": shots_on_target,
+            "shots_on_target_home": shots_on_target_home,
+            "shots_on_target_away": shots_on_target_away,
+            "goals_scored_half_time": goals_scored_half_time,
+            "goals_scored_half_time_home": goals_scored_half_time_home,
+            "goals_scored_half_time_away": goals_scored_half_time_away,
+            "leading_at_half_time": leading_at_half_time,
+            "leading_at_half_time_home": leading_at_half_time_home,
+            "leading_at_half_time_away": leading_at_half_time_away,
+            "draw_at_half_time": draw_at_half_time,
+            "draw_at_half_time_home": draw_at_half_time_home,
+            "draw_at_half_time_away": draw_at_half_time_away,
+            "losing_at_half_time": losing_at_half_time,
+            "losing_at_half_time_home": losing_at_half_time_home,
+            "losing_at_half_time_away": losing_at_half_time_away,
+            "over05_count": over05_count,
+            "over15_count": over15_count,
+            "over25_count": over25_count,
+            "over35_count": over35_count,
+            "over05_count_home": over05_count_home,
+            "over15_count_home": over15_count_home,
+            "over25_count_home": over25_count_home,
+            "over35_count_home": over35_count_home,
+            "over45_count_home": over45_count_home,
+            "over55_count_home": over55_count_home,
+            "over05_count_away": over05_count_away,
+            "over15_count_away": over15_count_away,
+            "over25_count_away": over25_count_away,
+            "over35_count_away": over35_count_away,
+            "over05_count_half_time": over05_count_half_time,
+            "over15_count_half_time": over15_count_half_time,
+            "over25_count_half_time": over25_count_half_time,
+            "over05_count_half_time_home": over05_count_half_time_home,
+            "over15_count_half_time_home": over15_count_half_time_home,
+            "over25_count_half_time_home": over25_count_half_time_home,
+            "over05_count_half_time_away": over05_count_half_time_away,
+            "over15_count_half_time_away": over15_count_half_time_away,
+            "over25_count_half_time_away": over25_count_half_time_away,
+            "corners_per_match": corners_per_match,
+            "corners_per_match_home": corners_per_match_home,
+            "corners_per_match_away": corners_per_match_away,
+            "cards_per_match": cards_per_match,
+            "cards_per_match_home": cards_per_match_home,
+            "cards_per_match_away": cards_per_match_away,
+            "xg_for_avg_overall": xg_for_avg_overall,
+            "xg_for_avg_home": xg_for_avg_home,
+            "xg_for_avg_away": xg_for_avg_away,
+            "xg_against_avg_overall": xg_against_avg_overall,
+            "xg_against_avg_home": xg_against_avg_home,
+            "xg_against_avg_away": xg_against_avg_away
+        }
+
+    # ----------------------------------------------------------------
+    # 4) Feature Engineering: Historical Data Oluşturma
+    # ----------------------------------------------------------------
+    historical_data = []
+
+    # "Complete" olduğuna emin olduğumuz temel sütunları kontrol edelim.
+    required_cols = ["home_team", "away_team", "home_team_goal_count", "away_team_goal_count",
+                     "home_team_goal_count_half_time", "away_team_goal_count_half_time",
+                     "home_team_corner_count", 'away_team_corner_count', 
+                     'home_team_yellow_cards', 'home_team_red_cards', 
+                     'away_team_yellow_cards', 'away_team_red_cards', 
+                     'home_team_first_half_cards', 'home_team_second_half_cards', 
+                     'away_team_first_half_cards', 'away_team_second_half_cards', 
+                     'home_team_shots', 'away_team_shots', 
+                     'home_team_shots_on_target', 'away_team_shots_on_target',
+                     'home_team_possession', 'away_team_possession',
+                     'team_a_xg', 'team_b_xg']
+
+    for index, row in df_matches.iterrows():
+        if row[required_cols].isnull().any():
+            continue
+        home = row["home_team"].strip()
+        away = row["away_team"].strip()
+        home_team_goal_count = row["home_team_goal_count"]
+        away_team_goal_count = row["away_team_goal_count"]
+        home_team_goal_count_half_time = row["home_team_goal_count_half_time"]
+        away_team_goal_count_half_time = row["away_team_goal_count_half_time"]
+        home_team_corner_count = row["home_team_corner_count"]
+        away_team_corner_count = row["away_team_corner_count"]
+        home_team_yellow_cards = row["home_team_yellow_cards"]
+        home_team_red_cards = row["home_team_red_cards"]
+        away_team_yellow_cards = row["away_team_yellow_cards"]
+        away_team_red_cards = row["away_team_red_cards"]
+        home_team_first_half_cards = row["home_team_first_half_cards"]
+        home_team_second_half_cards = row["home_team_second_half_cards"]
+        away_team_first_half_cards = row["away_team_first_half_cards"]
+        away_team_second_half_cards = row["away_team_second_half_cards"]
+        home_team_shots = row["home_team_shots"]
+        away_team_shots = row["away_team_shots"]
+        home_team_shots_on_target = row["home_team_shots_on_target"]
+        away_team_shots_on_target = row["away_team_shots_on_target"]
+        home_team_possession = row["home_team_possession"]
+        away_team_possession = row["away_team_possession"]
+        team_a_xg = row["team_a_xg"]
+        team_b_xg = row["team_b_xg"]
+
+        # Eğer teams_data'da bu takımlar yoksa atla.
+        if home not in teams_data or away not in teams_data:
+            continue
+
+        # Takım istatistiklerini çekelim
+        home_wins = teams_data[home]["wins"]
+        away_wins = teams_data[away]["wins"]
+        home_wins_home = teams_data[home]["wins_home"]
+        away_wins_home = teams_data[away]["wins_home"]
+        home_wins_away = teams_data[home]["wins_away"]
+        away_wins_away = teams_data[away]["wins_away"]
+        home_draws = teams_data[home]["draws"]
+        away_draws = teams_data[away]["draws"]
+        home_draws_home = teams_data[home]["draws_home"]
+        away_draws_home = teams_data[away]["draws_home"]
+        home_draws_away = teams_data[home]["draws_away"]
+        away_draws_away = teams_data[away]["draws_away"]
+        home_losses = teams_data[home]["losses"]
+        away_losses = teams_data[away]["losses"]
+        home_losses_home = teams_data[home]["losses_home"]
+        away_losses_home = teams_data[away]["losses_home"]
+        home_losses_away = teams_data[home]["losses_away"]
+        away_losses_away = teams_data[away]["losses_away"]
+        home_goals_scored = teams_data[home]["goals_scored"]
+        away_goals_scored = teams_data[away]["goals_scored"]
+        home_goals_scored_home = teams_data[home]["goals_scored_home"]
+        away_goals_scored_home = teams_data[away]["goals_scored_home"]
+        home_goals_scored_away = teams_data[home]["goals_scored_away"]
+        away_goals_scored_away = teams_data[away]["goals_scored_away"]
+        home_corners_total = teams_data[home]["corners_total"]
+        away_corners_total = teams_data[away]["corners_total"]
+        home_corners_total_home = teams_data[home]["corners_total_home"]
+        away_corners_total_home = teams_data[away]["corners_total_home"]
+        home_corners_total_away = teams_data[home]["corners_total_away"]
+        away_corners_total_away = teams_data[away]["corners_total_away"]
+        home_cards_total = teams_data[home]["cards_total"]
+        away_cards_total = teams_data[away]["cards_total"]
+        home_cards_total_home = teams_data[home]["cards_total_home"]
+        away_cards_total_home = teams_data[away]["cards_total_home"]
+        home_cards_total_away = teams_data[home]["cards_total_away"]
+        away_cards_total_away = teams_data[away]["cards_total_away"]
+        home_average_possession = teams_data[home]["average_possession"]
+        away_average_possession = teams_data[away]["average_possession"]
+        home_average_possession_home = teams_data[home]["average_possession_home"]
+        away_average_possession_home = teams_data[away]["average_possession_home"]
+        home_average_possession_away = teams_data[home]["average_possession_away"]
+        away_average_possession_away = teams_data[away]["average_possession_away"]
+        home_shots = teams_data[home]["shots"]
+        away_shots = teams_data[away]["shots"]
+        home_shots_home = teams_data[home]["shots_home"]
+        away_shots_home = teams_data[away]["shots_home"]
+        home_shots_away = teams_data[home]["shots_away"]
+        away_shots_away = teams_data[away]["shots_away"]
+        home_shots_on_target = teams_data[home]["shots_on_target"]
+        away_shots_on_target = teams_data[away]["shots_on_target"]
+        home_shots_on_target_home = teams_data[home]["shots_on_target_home"]
+        away_shots_on_target_home = teams_data[away]["shots_on_target_home"]
+        home_shots_on_target_away = teams_data[home]["shots_on_target_away"]
+        away_shots_on_target_away = teams_data[away]["shots_on_target_away"]
+        home_goals_scored_half_time = teams_data[home]["goals_scored_half_time"]
+        away_goals_scored_half_time = teams_data[away]["goals_scored_half_time"]
+        home_goals_scored_half_time_home = teams_data[home]["goals_scored_half_time_home"]
+        away_goals_scored_half_time_home = teams_data[away]["goals_scored_half_time_home"]
+        home_goals_scored_half_time_away = teams_data[home]["goals_scored_half_time_away"]
+        away_goals_scored_half_time_away = teams_data[away]["goals_scored_half_time_away"]
+        home_leading_at_half_time = teams_data[home]["leading_at_half_time"]
+        away_leading_at_half_time = teams_data[away]["leading_at_half_time"]
+        home_leading_at_half_time_home = teams_data[home]["leading_at_half_time_home"]
+        away_leading_at_half_time_home = teams_data[away]["leading_at_half_time_home"]
+        home_leading_at_half_time_away = teams_data[home]["leading_at_half_time_away"]
+        away_leading_at_half_time_away = teams_data[away]["leading_at_half_time_away"]
+        home_draw_at_half_time = teams_data[home]["draw_at_half_time"]
+        away_draw_at_half_time = teams_data[away]["draw_at_half_time"]
+        home_draw_at_half_time_home = teams_data[home]["draw_at_half_time_home"]
+        away_draw_at_half_time_home = teams_data[away]["draw_at_half_time_home"]
+        home_draw_at_half_time_away = teams_data[home]["draw_at_half_time_away"]
+        away_draw_at_half_time_away = teams_data[away]["draw_at_half_time_away"]
+        home_losing_at_half_time = teams_data[home]["losing_at_half_time"]
+        away_losing_at_half_time = teams_data[away]["losing_at_half_time"]
+        home_losing_at_half_time_home = teams_data[home]["losing_at_half_time_home"]
+        away_losing_at_half_time_home = teams_data[away]["losing_at_half_time_home"]
+        home_losing_at_half_time_away = teams_data[home]["losing_at_half_time_away"]
+        away_losing_at_half_time_away = teams_data[away]["losing_at_half_time_away"]
+        home_over05_count = teams_data[home]["over05_count"]
+        away_over05_count = teams_data[away]["over05_count"]
+        home_over15_count = teams_data[home]["over15_count"]
+        away_over15_count = teams_data[away]["over15_count"]
+        home_over25_count = teams_data[home]["over25_count"]
+        away_over25_count = teams_data[away]["over25_count"]
+        home_over35_count = teams_data[home]["over35_count"]
+        away_over35_count = teams_data[away]["over35_count"]
+        home_over05_count_home = teams_data[home]["over05_count_home"]
+        away_over05_count_home = teams_data[away]["over05_count_home"]
+        home_over15_count_home = teams_data[home]["over15_count_home"]
+        away_over15_count_home = teams_data[away]["over15_count_home"]
+        home_over25_count_home = teams_data[home]["over25_count_home"]
+        away_over25_count_home = teams_data[away]["over25_count_home"]
+        home_over35_count_home = teams_data[home]["over35_count_home"]
+        away_over35_count_home = teams_data[away]["over35_count_home"]
+        home_over45_count_home = teams_data[home]["over45_count_home"]
+        away_over45_count_home = teams_data[away]["over45_count_home"]
+        home_over55_count_home = teams_data[home]["over55_count_home"]
+        away_over55_count_home = teams_data[away]["over55_count_home"]
+        home_over05_count_away = teams_data[home]["over05_count_away"]
+        away_over05_count_away = teams_data[away]["over05_count_away"]
+        home_over15_count_away = teams_data[home]["over15_count_away"]
+        away_over15_count_away = teams_data[away]["over15_count_away"]
+        home_over25_count_away = teams_data[home]["over25_count_away"]
+        away_over25_count_away = teams_data[away]["over25_count_away"]
+        home_over35_count_away = teams_data[home]["over35_count_away"]
+        away_over35_count_away = teams_data[away]["over35_count_away"]
+        home_over05_count_half_time = teams_data[home]["over05_count_half_time"]
+        away_over05_count_half_time = teams_data[away]["over05_count_half_time"]
+        home_over15_count_half_time = teams_data[home]["over15_count_half_time"]
+        away_over15_count_half_time = teams_data[away]["over15_count_half_time"]
+        home_over25_count_half_time = teams_data[home]["over25_count_half_time"]
+        away_over25_count_half_time = teams_data[away]["over25_count_half_time"]
+        home_over05_count_half_time_home = teams_data[home]["over05_count_half_time_home"]
+        away_over05_count_half_time_home = teams_data[away]["over05_count_half_time_home"]
+        home_over15_count_half_time_home = teams_data[home]["over15_count_half_time_home"]
+        away_over15_count_half_time_home = teams_data[away]["over15_count_half_time_home"]
+        home_over25_count_half_time_home = teams_data[home]["over25_count_half_time_home"]
+        away_over25_count_half_time_home = teams_data[away]["over25_count_half_time_home"]
+        home_over05_count_half_time_away = teams_data[home]["over05_count_half_time_away"]
+        away_over05_count_half_time_away = teams_data[away]["over05_count_half_time_away"]
+        home_over15_count_half_time_away = teams_data[home]["over15_count_half_time_away"]
+        away_over15_count_half_time_away = teams_data[away]["over15_count_half_time_away"]
+        home_over25_count_half_time_away = teams_data[home]["over25_count_half_time_away"]
+        away_over25_count_half_time_away = teams_data[away]["over25_count_half_time_away"]
+        home_corners_per_match = teams_data[home]["corners_per_match"]
+        away_corners_per_match = teams_data[away]["corners_per_match"]
+        home_corners_per_match_home = teams_data[home]["corners_per_match_home"]
+        away_corners_per_match_home = teams_data[away]["corners_per_match_home"]
+        home_corners_per_match_away = teams_data[home]["corners_per_match_away"]
+        away_corners_per_match_away = teams_data[away]["corners_per_match_away"]
+        home_cards_per_match = teams_data[home]["cards_per_match"]
+        away_cards_per_match = teams_data[away]["cards_per_match"]
+        home_xg_for_avg_overall = teams_data[home]["xg_for_avg_overall"]
+        away_xg_for_avg_overall = teams_data[away]["xg_for_avg_overall"]
+        home_xg_for_avg_home = teams_data[home]["xg_for_avg_home"]
+        away_xg_for_avg_home = teams_data[away]["xg_for_avg_home"]
+        home_xg_for_avg_away = teams_data[home]["xg_for_avg_away"]
+        away_xg_for_avg_away = teams_data[away]["xg_for_avg_away"]
+        home_xg_against_avg_overall = teams_data[home]["xg_against_avg_overall"]
+        away_xg_against_avg_overall = teams_data[away]["xg_against_avg_overall"]
+        home_xg_against_avg_home = teams_data[home]["xg_against_avg_home"]
+        away_xg_against_avg_home = teams_data[away]["xg_against_avg_home"]
+        home_xg_against_avg_away = teams_data[home]["xg_against_avg_away"]
+        away_xg_against_avg_away = teams_data[away]["xg_against_avg_away"]
+
+        # Maç sonucu etiketi: H, D, A
+        if home_team_goal_count > away_team_goal_count:
+            result = "H"
+        elif away_team_goal_count > home_team_goal_count:
+            result = "A"
+        else:
+            result = "D"
+
+        # Over 2.5 etiketi (3+ gol)
+        over25 = 1 if (home_team_goal_count + away_team_goal_count) >= 3 else 0
+        home_xG = teams_data[home].get("xg_for_avg_overall", 0)
+        away_xG = teams_data[away].get("xg_for_avg_overall", 0)
+        home_poss = teams_data[home].get("average_possession", 0)
+        away_poss = teams_data[away].get("average_possession", 0)
+        expected_goals_home = (home_xG + teams_data[away].get("xg_against_avg_overall", 0)) / 2
+        expected_goals_away = (away_xG + teams_data[home].get("xg_against_avg_overall", 0)) / 2
+
+        exp_corners = (((teams_data[home]["corners_total"] + teams_data[away]["corners_total"]) / 2) / 10) + np.random.normal(0, 0.1)
+        # Doğrudan tahmin edilen corner sayısı (yuvarlanmış tamsayı)
+        predicted_corners = int(round(exp_corners))
+        id=generate_stable_id(home,away)
+        # Kart tahmini:
+        exp_cards = (((teams_data[home]["cards_total"] + teams_data[away]["cards_total"]) / 2) / 10) + np.random.normal(0, 0.1)
+        predicted_cards = int(round(exp_cards))
+        
+        # Historical data listesine ekle
+        historical_data.append([
+            # Maç bilgileri (df_matches'den)
+            home, away,
+            home_team_goal_count, away_team_goal_count,
+            home_team_goal_count_half_time, away_team_goal_count_half_time,
+            home_team_corner_count, away_team_corner_count,
+            home_team_yellow_cards, home_team_red_cards,
+            away_team_yellow_cards, away_team_red_cards,
+            home_team_first_half_cards, home_team_second_half_cards,
+            away_team_first_half_cards, away_team_second_half_cards,
+            home_team_shots, away_team_shots,
+            home_team_shots_on_target, away_team_shots_on_target,
+            home_team_possession, away_team_possession,
+            team_a_xg, team_b_xg,
+            # Takım bazlı istatistikler (teams_data'dan)
+            home_wins, home_wins_home, home_wins_away,
+            home_draws, home_draws_home, home_draws_away,
+            home_losses, home_losses_home, home_losses_away,
+            away_wins, away_wins_home, away_wins_away,
+            away_draws, away_draws_home, away_draws_away,
+            away_losses, away_losses_home, away_losses_away,
+            # Ek hesaplamalar
+            expected_goals_home, expected_goals_away,
+            result,
+            over25,
+            exp_corners,
+            exp_cards,
+            
+        ])
+
+    # Tüm eklenen verileri temsil edecek sütun isimleri (columns)
+    columns = [
+        "HomeTeam", "AwayTeam",
+        "HomeGoals", "AwayGoals",
+        "HomeGoals_HT", "AwayGoals_HT",
+        "HomeCorners", "AwayCorners",
+        "HomeYellow", "HomeRed",
+        "AwayYellow", "AwayRed",
+        "HomeFirstHalfCards", "HomeSecondHalfCards",
+        "AwayFirstHalfCards", "AwaySecondHalfCards",
+        "HomeShots", "AwayShots",
+        "HomeShotsOnTarget", "AwayShotsOnTarget",
+        "HomePossession", "AwayPossession",
+        "TeamA_xG", "TeamB_xG",
+        "HomeWins", "HomeWins_Home", "HomeWins_Away",
+        "HomeDraws", "HomeDraws_Home", "HomeDraws_Away",
+        "HomeLosses", "HomeLosses_Home", "HomeLosses_Away",
+        "AwayWins", "AwayWins_Home", "AwayWins_Away",
+        "AwayDraws", "AwayDraws_Home", "AwayDraws_Away",
+        "AwayLosses", "AwayLosses_Home", "AwayLosses_Away",
+        "ExpectedGoals_Home", "ExpectedGoals_Away",
+        "Result", "Over2_5",
+        "OverCorners_8_5", "OverCards_2_5",
+        
+    ]
+
+    # Historical verilerden DataFrame oluşturalım
+    df_historical = pd.DataFrame(historical_data, columns=columns)
+
+    print("\n=== df_train Oluşan Verisi (İlk 5 Satır) ===")
+    print(df_historical.head())
+
+    # ----------------------------------------------------------------
+    # 5) Model İçin Verileri Hazırlama: Bütün Sütun Başlıklarını Kullanma
+    # ----------------------------------------------------------------
+    drop_columns = ["HomeTeam", "AwayTeam", "Result", "HomeGoals", "AwayGoals", "Over2_5"]
+
+    le_home = LabelEncoder()
+    le_away = LabelEncoder()
+    df_historical["HomeTeam"] = le_home.fit_transform(df_historical["HomeTeam"])
+    df_historical["AwayTeam"] = le_away.fit_transform(df_historical["AwayTeam"])
+
+    feature_cols = df_historical.columns.difference(drop_columns)
+
+    print("\nFeature Columns:")
+    print(feature_cols.tolist())
+
+    X = df_historical[feature_cols]
+    y = df_historical["Result"]  # H, D, A target
+
+    # ----------------------------------------------------------------
+    # 6) Model Eğitimi: RandomForestClassifier
+    # ----------------------------------------------------------------
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.3, random_state=42, stratify=y
+    )
+
+    model = RandomForestClassifier(
+        n_estimators=100,
+        random_state=42,
+        class_weight="balanced"
+    )
+    model.fit(X_train, y_train)
+
+    y_pred = model.predict(X_test)
+    print("\n=== MAÇ SONUCU (H/D/A) MODEL PERFORMANSI ===")
+    print("Accuracy:", accuracy_score(y_test, y_pred))
+    print("Confusion Matrix (H, D, A):")
+    print(confusion_matrix(y_test, y_pred, labels=["H", "D", "A"]))
+    print("Classification Report:")
+    print(classification_report(y_test, y_pred))
+
+    # ----------------------------------------------------------------
+    # Feature Importance: Tüm kullanılan sütun başlıklarının önemini görüntüleme
+    # ----------------------------------------------------------------
+    importances = model.feature_importances_
+    feature_names = X.columns
+    indices = np.argsort(importances)[::-1]
+
+    print("\n=== Feature Importances ===")
+    for i in range(len(feature_names)):
+        print(f"{i+1}. {feature_names[indices[i]]}: {importances[indices[i]]:.4f}")
+
+    plt.figure(figsize=(10, 6))
+    plt.title("Feature Importances")
+    plt.bar(range(len(feature_names)), importances[indices], align="center")
+    plt.xticks(range(len(feature_names)), feature_names[indices], rotation=45, ha="right")
+    plt.xlabel("Özellikler")
+    plt.ylabel("Önem Skoru")
+    plt.tight_layout()
+    plt.show()
+
+    # ----------------------------------------------------------------
+    # 7) Over 2.5 (3+ Gol) İçin Ayrı Model (Opsiyonel)
+    # ----------------------------------------------------------------
+    X_over = df_historical[feature_cols]
+    y_over = df_historical["Over2_5"]
+
+    Xo_train, Xo_test, yo_train, yo_test = train_test_split(
+        X_over, y_over, test_size=0.2, random_state=42, stratify=y_over
+    )
+
+    model_over = RandomForestClassifier(
+        n_estimators=100,
+        random_state=42,
+        class_weight="balanced"
+    )
+    model_over.fit(Xo_train, yo_train)
+
+    yo_pred = model_over.predict(Xo_test)
+    print("\n=== OVER 2.5 (3+ GOL) MODEL PERFORMANSI ===")
+    print("Accuracy (Over2.5):", accuracy_score(yo_test, yo_pred))
+    print("Confusion Matrix:")
+    print(confusion_matrix(yo_test, yo_pred))
+    print(classification_report(yo_test, yo_pred))
+
+    # ----------------------------------------------------------------
+    # 8) Poisson ile 3+ Gol Olasılığı Fonksiyonu (Opsiyonel)
+    # ----------------------------------------------------------------
+    def poisson_prob_3plus(lmbda):
+        """Toplam golün 3+ olma olasılığı (0,1,2 hariç)."""
+        return 1 - (scipy.stats.poisson.pmf(0, lmbda) +
+                    scipy.stats.poisson.pmf(1, lmbda) +
+                    scipy.stats.poisson.pmf(2, lmbda))
+
+    # ----------------------------------------------------------------
+    # 9) YENİ MAÇLAR ÜZERİNDE 1000 KEZ SİMÜLASYON
+    # ----------------------------------------------------------------
+    new_matches = fixturecalculate(fixture)
+
+    NUM_SIMULATIONS = 1000
+
+    # Simülasyon sonuçlarını saklamak için sözlükler
+    simulation_results = {m: [] for m in new_matches}      # H/D/A tahmini listesi
+    simulation_over25 = {m: [] for m in new_matches}         # Over2.5 tahmini (0/1)
+    simulation_poisson = {m: [] for m in new_matches}        # Poisson ile 3+ gol olasılıkları
+    simulation_corners = {m: [] for m in new_matches}
+    simulation_cards = {m: [] for m in new_matches}
+    simulation_scores = {m: {} for m in new_matches}
+    # --- Yeni eklenen: İki Takımın Gol Atması (BTTS) sonuçları ---
+    simulation_btts = {m: [] for m in new_matches}
+    match_rows = []
+
+    for match in new_matches:
+        home, away,date,time,league = match
+        if home not in teams_data or away not in teams_data:
+            print(f"[!] Takım verisi eksik: {home} / {away}")
+            continue
+
+        for _ in range(NUM_SIMULATIONS):
+            # Ev sahibi avantajına rastgele küçük sapma
+            exp_g_home = ((float(teams_data[home]["xg_for_avg_overall"]) + float(teams_data[away]["xg_against_avg_overall"])) / 2) + np.random.normal(0, 0.05)
+            exp_g_away = ((float(teams_data[away]["xg_for_avg_overall"]) + float(teams_data[home]["xg_against_avg_overall"])) / 2) + np.random.normal(0, 0.05)
+
+            exp_g_home = max(exp_g_home, 0.01)
+            exp_g_away = max(exp_g_away, 0.01)
+
+            home_goals = np.random.poisson(exp_g_home)
+            away_goals = np.random.poisson(exp_g_away)
+
+            home_goals = home_goals if home_goals < 5 else 5
+            away_goals = away_goals if away_goals < 5 else 5
+
+            score = (home_goals, away_goals)
+            simulation_scores[match][score] = simulation_scores[match].get(score, 0) + 1
+
+            exp_corners = (((teams_data[home]["corners_total"] + teams_data[away]["corners_total"]) / 2) / 10) + np.random.normal(0, 0.1)
+            predicted_corners = int(round(exp_corners))
+            simulation_corners[match].append(predicted_corners)
+
+            exp_cards = (((teams_data[home]["cards_total"] + teams_data[away]["cards_total"]) / 2) / 10) + np.random.normal(0, 0.1)
+            predicted_cards = int(round(exp_cards))
+            simulation_cards[match].append(predicted_cards)
+            # --- Yeni eklenen: BTTS hesaplaması ---
+            btts = 1 if home_goals > 0 and away_goals > 0 else 0
+            simulation_btts[match].append(btts)
+           
+            row_dict = {
+                "id":generate_stable_id(home,away),
+                "HomeTeam": home,
+                "AwayTeam": away,
+                "HomeGoals": 0,
+                "AwayGoals": 0,
+                "HomeGoals_HT": 0,
+                "AwayGoals_HT": 0,
+                "HomeCorners": teams_data[home]["corners_total"],
+                "AwayCorners": teams_data[away]["corners_total"],
+                "HomeYellow": teams_data[home]["cards_total"],
+                "HomeRed": 0,
+                "AwayYellow": teams_data[away]["cards_total"],
+                "AwayRed": 0,
+                "HomeFirstHalfCards": teams_data[home]["over05_count_half_time_home"],
+                "HomeSecondHalfCards": teams_data[home]["over05_count_half_time_away"],
+                "AwayFirstHalfCards": teams_data[away]["over05_count_half_time_home"],
+                "AwaySecondHalfCards": teams_data[away]["over05_count_half_time_away"],
+                "HomeShots": teams_data[home]["shots"],
+                "AwayShots": teams_data[away]["shots"],
+                "HomeShotsOnTarget": teams_data[home]["shots_on_target"],
+                "AwayShotsOnTarget": teams_data[away]["shots_on_target"],
+                "HomePossession": teams_data[home]["average_possession"],
+                "AwayPossession": teams_data[away]["average_possession"],
+                "TeamA_xG": row["team_a_xg"],
+                "TeamB_xG": row["team_b_xg"],
+                "HomeWins": teams_data[home]["wins"],
+                "HomeWins_Home": teams_data[home]["wins_home"],
+                "HomeWins_Away": teams_data[home]["wins_away"],
+                "HomeDraws": teams_data[home]["draws"],
+                "HomeDraws_Home": teams_data[home]["draws_home"],
+                "HomeDraws_Away": teams_data[home]["draws_away"],
+                "HomeLosses": teams_data[home]["losses"],
+                "HomeLosses_Home": teams_data[home]["losses_home"],
+                "HomeLosses_Away": teams_data[home]["losses_away"],
+                "AwayWins": teams_data[away]["wins"],
+                "AwayWins_Home": teams_data[away]["wins_home"],
+                "AwayWins_Away": teams_data[away]["wins_away"],
+                "AwayDraws": teams_data[away]["draws"],
+                "AwayDraws_Home": teams_data[away]["draws_home"],
+                "AwayDraws_Away": teams_data[away]["draws_away"],
+                "AwayLosses": teams_data[away]["losses"],
+                "AwayLosses_Home": teams_data[away]["losses_home"],
+                "AwayLosses_Away": teams_data[away]["losses_away"],
+                "ExpectedGoals_Home": exp_g_home,
+                "ExpectedGoals_Away": exp_g_away,
+                "Result": result,
+                "Over2_5": over25,
+                "OverCorners_8_5": predicted_corners,
+                "OverCards_2_5": predicted_cards,
+                
+                
+            }
+
+            df_new = pd.DataFrame([row_dict])
+            drop_columns = ["HomeTeam", "AwayTeam", "Result", "HomeGoals", "AwayGoals", "Over2_5"]
+            feature_cols = df_historical.columns.difference(drop_columns)
+            df_new = df_new[feature_cols]
+            proba_result = model.predict_proba(df_new)[0]
+            classes_ = model.classes_
+            result_pick = np.random.choice(classes_, p=proba_result)
+            simulation_results[match].append(result_pick)
+
+            proba_over2 = model_over.predict_proba(df_new)[0]
+            pick_over = np.random.choice([0, 1], p=proba_over2)
+            simulation_over25[match].append(pick_over)
+
+            lam_total = exp_g_home + exp_g_away
+            p_3plus = poisson_prob_3plus(lam_total)
+            simulation_poisson[match].append(p_3plus)
+
+    # ----------------------------------------------------------------
+    # 10) 1000 Simülasyonun Özetini Ekrana Basma
+    # ----------------------------------------------------------------
+    sonuc = []
+    print(f"\n=== {NUM_SIMULATIONS} Simülasyonun SONUÇLARI ===")
+    for match in new_matches:
+        home, away,date,time,league = match
+        results = simulation_results[match]
+        overs = simulation_over25[match]
+        p_3plusstat=simulation_poisson[match]
+        poisson_list = simulation_poisson[match]
+        corners_list = simulation_corners[match]
+        cards_list = simulation_cards[match]
+        unique_corners, counts_corners = np.unique(corners_list, return_counts=True)
+        freq_corners = dict(zip(unique_corners, counts_corners))
+        sorted_corners = sorted(freq_corners.items(), key=lambda x: x[1], reverse=True)
+        top5_corners = sorted_corners[:5]
+        unique_cards, counts_cards = np.unique(cards_list, return_counts=True)
+        freq_cards = dict(zip(unique_cards, counts_cards))
+        sorted_cards = sorted(freq_cards.items(), key=lambda x: x[1], reverse=True)
+        top5_cards = sorted_cards[:5]
+        
+        h_wins = results.count("H")
+        d_wins = results.count("D")
+        a_wins = results.count("A")
+        over_count = sum(overs)
+        over_ratio = (over_count / len(overs)) * 100 if len(overs) > 0 else 0
+        avg_poisson_3plus = np.mean(poisson_list) if len(poisson_list) > 0 else 0
+
+        # BTTS sonuçlarının hesaplanması
+        btts_count = sum(simulation_btts[match])
+        btts_ratio = (btts_count / NUM_SIMULATIONS) * 100 if len(simulation_btts[match]) > 0 else 0
+
+        score_freq = simulation_scores[match]
+        sorted_scores = sorted(score_freq.items(), key=lambda x: x[1], reverse=True)
+        scores_with_pct = [(score, count, count/NUM_SIMULATIONS*100) for score, count in sorted_scores]
+        first_half_scores = {}
+        second_half_scores = {}
+        match_results_from_half = {}
+        home_to_away_count = 0
+        away_to_home_count= 0
+        home_to_home_count= 0
+        away_to_away_count= 0
+
+
+        
+        for _ in range(NUM_SIMULATIONS):
+            ht_home_goals = np.random.poisson(exp_g_home / 2)
+            ht_away_goals = np.random.poisson(exp_g_away / 2)
+            ft_home_goals = np.random.poisson(exp_g_home)
+            ft_away_goals = np.random.poisson(exp_g_away)
+
+            ht_score = (ht_home_goals, ht_away_goals)
+            ft_score = (ft_home_goals, ft_away_goals)
+
+            first_half_scores[ht_score] = first_half_scores.get(ht_score, 0) + 1
+            second_half_home_goals = max(0, ft_home_goals - ht_home_goals)
+            second_half_away_goals = max(0, ft_away_goals - ht_away_goals)
+            second_half_score = (second_half_home_goals, second_half_away_goals)
+            second_half_scores[second_half_score] = second_half_scores.get(second_half_score, 0) + 1
+            match_results_from_half[(ht_score, second_half_score)] = match_results_from_half.get((ht_score, second_half_score), 0) + 1
+
+            if ht_home_goals > ht_away_goals:
+                ht_winner = "H"
+            elif ht_away_goals > ht_home_goals:
+                ht_winner = "A"
+            else:
+                ht_winner = "D"
+
+            if ft_home_goals > ft_away_goals:
+                ft_winner = "H"
+            elif ft_away_goals > ft_home_goals:
+                ft_winner = "A"
+            else:
+                ft_winner = "D"
+
+            if ht_winner == "H" and ft_winner == "A":
+                home_to_away_count += 1
+            if ht_winner == "A" and ft_winner == "H":
+                away_to_home_count += 1
+            if ht_winner == "H" and ft_winner == "H":
+                home_to_home_count += 1
+            if ht_winner == "A" and ft_winner == "A":
+                away_to_away_count += 1    
+
+               
+
+        sorted_half_scores = sorted(first_half_scores.items(), key=lambda x: x[1], reverse=True)
+        half_scores_with_pct = [(score, count, count/NUM_SIMULATIONS*100) for score, count in sorted_half_scores]
+
+        sorted_second_half_scores = sorted(second_half_scores.items(), key=lambda x: x[1], reverse=True)
+        second_half_scores_with_pct = [(score, count, count/NUM_SIMULATIONS*100) for score, count in sorted_second_half_scores]
+
+        sorted_match_results = sorted(match_results_from_half.items(), key=lambda x: x[1], reverse=True)
+        match_results_with_pct = [(scores, count, count/NUM_SIMULATIONS*100) for scores, count in sorted_match_results]
+        
+        home_to_away_pct = (home_to_away_count / NUM_SIMULATIONS) * 100
+        away_to_home_pct = (away_to_home_count / NUM_SIMULATIONS) * 100        
+        home_to_home_pct  = (home_to_home_count / NUM_SIMULATIONS) * 100
+        away_to_away_pct  = (away_to_away_count / NUM_SIMULATIONS) * 100
+
+        top5_first_half = ", ".join([f"{score} ({pct:.2f}%)" for score, count, pct in half_scores_with_pct[:5]])
+        top5_final = ", ".join([f"{score} ({pct:.2f}%)" for score, count, pct in scores_with_pct[:5]])
+        top3_combo = ", ".join([f"İlk Yarı: {scores[0]}, İkinci Yarı: {scores[1]} -> Final: ({scores[0][0]+scores[1][0]}, {scores[0][1]+scores[1][1]}) ({pct:.2f}%)"
+                                    for scores, count, pct in match_results_with_pct[:3]])
+        home_slug = slugify_team_name(home)
+        away_slug = slugify_team_name(away)
+        row_dict = {
+            "id":generate_stable_id(home,away),
+            "country":country,
+            "HomeTeam":home,
+            "AwayTeam":away,
+            "MS1": round(h_wins/NUM_SIMULATIONS*100, 2),
+            "MSX": round(d_wins/NUM_SIMULATIONS*100, 2),
+            "MS2": round(a_wins/NUM_SIMULATIONS*100, 2),
+            "KG": round(btts_ratio, 2),
+            "over2_5": round(over_ratio, 2),
+            "p_3plus":round((sum(simulation_poisson[match]) / NUM_SIMULATIONS) * 100, 2),
+            "DATE":parse_date_only(date.strip()),
+            "TIME":get_time(time.strip()),
+            "league":league,
+            "scores_with_pct":scores_with_pct,
+            "half_scores_with_pct":half_scores_with_pct,
+            "match_result_with_pct":match_results_with_pct,
+            "top_5_first_half":top5_first_half,
+            "top_5_final":top5_final,
+            "top3_combo":top3_combo,
+            "home_team_logo":  f"{home_slug}.png",
+            "away_team_logo": f"{away_slug}.png",
+            "home_to_away_count":home_to_away_count,
+            "home_to_home_count":home_to_home_count,
+            "away_to_home_count":away_to_home_count,
+            "away_to_away_count":away_to_away_count,
+            "home_to_away_pct":home_to_away_pct,
+            "home_to_home_pct":home_to_home_pct,
+            "away_to_home_pct":away_to_home_pct,
+            "away_to_away_pct":away_to_away_pct,
+
+            
+            
+            # Buraya istediğiniz kadar ekstra sütun ekleyebilirsiniz:
+            # "Top5_FirstHalfScore": top5_first_half_scores_str,
+            # "Top3_Combo": top3_combo,
+            # vs.
+        }
+        mapping = {
+            "id": "id",
+            "country":"country",
+            "HomeTeam": "home_team",
+            "AwayTeam": "away_team",
+            "MS1": "ms1",
+            "MSX": "msx",
+            "MS2": "ms2",
+            "KG": "kg",
+            "over2_5": "over2_5",
+            "p_3plus":"p_3plus",
+            "DATE": "date",          # Eğer tarih string ise, burada uygun şekilde dönüştürmeniz gerekebilir.
+            "TIME": "time",
+            "league":"league",          # Aynı şekilde, zaman için de.
+            "scores_with_pct": "scores_with_pct",
+            "half_scores_with_pct": "half_scores_with_pct",
+            "match_result_with_pct": "match_result_with_pct",
+            "top_5_first_half": "top_5_first_half",
+            "top_5_final": "top_5_final",
+            "top3_combo": "top3_combo",
+            "home_team_logo": "home_team_logo",
+            "away_team_logo": "away_team_logo",
+            "home_to_away_count":"home_to_away_count",
+            "home_to_home_count":"home_to_home_count",
+            "away_to_home_count":"away_to_home_count",
+            "away_to_away_count":"away_to_away_count",
+            "home_to_away_pct":"home_to_away_pct",
+            "home_to_home_pct":"home_to_home_pct",
+            "away_to_home_pct":"away_to_home_pct",
+            "away_to_away_pct":"away_to_away_pct",
+            
+        }
+        defaults = { mapping[key]: value for key, value in row_dict.items() if key in mapping }
+        MatchResult.objects.update_or_create(id=row_dict["id"],defaults=defaults)
+        
+        
+# Yeni bir model instance'ı oluşturup kaydediyoruz.
+        
+
+        # Oluşturduğumuz bu satırı, "match_rows" listemize ekliyoruz
+        match_rows.append(row_dict)
+        print(f"\nMaç: {home} vs {away}-{generate_stable_id(home,away)}")
+        print(f"  🏠 Ev Sahibi Kazanma: {h_wins} / {NUM_SIMULATIONS} = %{h_wins/NUM_SIMULATIONS*100:.2f}")
+        print(f"  🤝 Beraberlik: {d_wins} / {NUM_SIMULATIONS} = %{d_wins/NUM_SIMULATIONS*100:.2f}")
+        print(f"  🚀 Deplasman Kazanma: {a_wins} / {NUM_SIMULATIONS} = %{a_wins/NUM_SIMULATIONS*100:.2f}")
+        print(f"  🔥 İki Takımın Gol Atma (BTTS) Oranı: %{btts_ratio:.2f}")
+        print(f"  🌐 Over 2.5 Oranı: %{over_ratio:.2f}")
+        print(f"  🔥 Poisson 3+ Gol (ortalama): %{avg_poisson_3plus*100:.2f}")
+        print(f"  ⚽ Tam Zamanlı Skor Dağılımı (Yüzdelikli):")
+        for score, count, pct in scores_with_pct:
+            print(f"      {score}: {count} kez (%{pct:.2f})")
+        print(f"  🏆 İlk Yarı Skor Dağılımı (Yüzdelikli):")
+        for score, count, pct in half_scores_with_pct:
+            print(f"      {score}: {count} kez (%{pct:.2f})")
+
+        print(f"  🔄 İlk Yarı Ev - Maç Sonu Deplasman (HT-H2): {home_to_away_count} kez (%{home_to_away_pct:.2f})")
+        print(f"  🔄 İlk Yarı Deplasman - Maç Sonu Ev (AT-H2): {away_to_home_count} kez (%{away_to_home_pct:.2f})")    
+        print(f"  🔄 İlk Yarı Ev- Maç Sonu Ev (AT-H2): {home_to_home_count} kez (%{home_to_home_pct:.2f})")    
+        print(f"  🔄 İlk Yarı Deplasman - Maç Sonu Deplasman (AT-H2): {away_to_away_count} kez (%{away_to_away_pct:.2f})")    
+
+
+
+        print(f"\n  ⚽ İlk Yarı & İkinci Yarı Kombinasyonları:")
+        for (ht_score, sh_score), count, pct in match_results_with_pct:
+            final_score = (ht_score[0] + sh_score[0], ht_score[1] + sh_score[1])
+            print(f"      İlk Yarı: {ht_score},  İkinci Yarı: {sh_score}  ➝  Maç Sonu: {final_score}  (%{pct:.2f})")
+        print(f"beklenen corner : {predicted_corners} beklenen card:{predicted_cards}")
+        result_str = (f"Maç: {home} vs {away}- ID{id}:  MS1: {h_wins/NUM_SIMULATIONS*100:.2f}%  "
+                      f"MSX: {d_wins/NUM_SIMULATIONS*100:.2f}%  "
+                      f"MS2: {a_wins/NUM_SIMULATIONS*100:.2f}%  "
+                      f"BTTS: {btts_ratio:.2f}%  "
+                      f"2.5 Üst: {over_ratio:.2f}%  "
+                      f"Poisson: {avg_poisson_3plus*100:.2f}%\n"
+                      f"KG VAR : {btts_ratio:.2f}%\n"
+                      f"Top 5 İlk Yarı Skorları: {top5_first_half}\n"
+                      f"Top 5 Maç Sonu Skorları: {top5_final}\n"
+                      f"Top 3 Kombinasyon: {top3_combo}"
+                      )
+        
+        sonuc.append(result_str)
+
+    
+    return match_rows
+def fixturecalculate(df_matches):
+    """
+    CSV'deki "date_GMT" sütunundaki değeri parse_date_only ile YYYY-MM-DD formatına çevirir,
+    ardından bu tarihi datetime.date nesnesine dönüştürüp, bugünden 5 gün sonraya kadar olan
+    maçları tuple olarak (home_team, away_team, date_GMT) döndürür.
+    """
+    import pandas as pd
+    from datetime import date, timedelta, datetime
+
+    # Bugünün ve cutoff tarihinin hesaplanması
+    today = date.today()
+    cutoff = today + timedelta(days=7)
+
+    new_matches = []
+    for _, row in df_matches.iterrows():
+        # parse_date_only fonksiyonunuz, "Feb 14 2025 - 8:00pm" gibi bir metni "2025-02-14" formatında döndürüyor
+        parsed_date_str = row["date"]
+        # ISO formatındaki stringi datetime.date nesnesine çeviriyoruz:
+        try:
+            match_date = datetime.strptime(parsed_date_str, "%Y-%m-%d").date()
+        except ValueError:
+            continue  # Eğer dönüştürülemiyorsa, o satırı atla
+
+        # Eğer maç tarihi, bugünden 5 gün sonrasına kadar ise listeye ekle
+        if today <= match_date <= cutoff:
+            new_matches.append((row["home_team"], row["away_team"], row["date"],row["time"],row["league"]))
+    return new_matches
+
+
+def get_data_from_db():
+    # GlobalTeam verilerini alıp DataFrame'e çeviriyoruz.
+    teams_qs = GlobalTeam.objects.all().values()
+    df_teams = pd.DataFrame(list(teams_qs))
+    
+    # PastMatches verilerini alıp DataFrame'e çeviriyoruz.
+    matches_qs = PastMatches.objects.all().values()
+    df_matches_all = pd.DataFrame(list(matches_qs))
+    
+    # Gruplama için hangi sütunu kullanacağımızı belirleyelim.
+    teams_group_col = "country" if "country" in df_teams.columns else "league"
+    matches_group_col = "country" if "country" in df_matches_all.columns else "league"
+    
+    # Her iki tablodan benzersiz değerleri alıyoruz.
+    countries = set(df_teams[teams_group_col].dropna().unique()).union(set(df_matches_all[matches_group_col].dropna().unique()))
+    
+    results_by_country = {}
+    
+    today = pd.Timestamp.today().normalize()
+    
+    for country in countries:
+        # Eğer country "Europe" ise, global takımları filtrelemeyelim
+        if country.lower() == "europe":
+            df_teams_country = df_teams.copy()
+        else:
+            df_teams_country = df_teams[df_teams[teams_group_col] == country]
+        
+        # O ülkeye ait tüm maçlar (fixture olarak kullanılacak)
+        df_matches_country_all = df_matches_all[df_matches_all[matches_group_col] == country]
+        # Sadece bugünden önceki maçlar
+        df_matches_country = df_matches_country_all[pd.to_datetime(df_matches_country_all['date']) < today]
+        
+        # Eğer yeterli veri varsa:
+        if not df_teams_country.empty and not df_matches_country.empty:
+            league_name = df_matches_country_all.iloc[0]["league"] if "league" in df_matches_country_all.columns else country
+            results = betprogram(df_teams_country, df_matches_country, df_matches_country_all.copy(), league=league_name, country=country)
+            results_by_country[country] = results
+        else:
+            print(f"[!] {country} için yeterli veri yok.")
+    
+    return results_by_country
+ 
+
+# Veritabanından tüm verileri çektiğinizi varsayalım:
+
+
+# Her maç için tahmin ve simülasyonu çalıştırın:
+
+
+
+
+# Örneğin:
+if __name__ == '__main__':
+    results = get_data_from_db()
+    for country, res in results.items():
+        print(f"\n{country} için sonuçlar:")
+        print(res)
+
+
+if __name__ == '__main__':
+    # Veritabanından verileri çekiyoruz
+    df_teams, df_matches = get_data_from_db()
+    # Fixture için matches DataFrame'inin bir kopyasını oluşturuyoruz
+    fixture = df_matches.copy()
+    # Betprogram fonksiyonunu çağırıyoruz
+    results = betprogram(df_teams, df_matches, fixture, league_name="Global")
+    print("Sonuçlar:")
+    print(results)
