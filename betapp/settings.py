@@ -81,7 +81,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'betapp.urls'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 
 
 TEMPLATES = [
