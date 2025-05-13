@@ -1,0 +1,26 @@
+=== 2025-05-13 API güncellemesi başladı ===
+
+API’den dönen maç sayısı: 94
+
+Sorgulanıyor → Chaco For Ever vs Defensores De Belgrano | Primera Nacional | 2025-05-13
+  → Eşleşen MatchResult bulunamadı.
+
+Sorgulanıyor → El Nacional vs Cuniburo | Liga Pro | 2025-05-13
+  → Eşleşen MatchResult bulunamadı.
+
+Sorgulanıyor → Amazonas vs CRB | Serie B | 2025-05-13
+  → Eşleşen MatchResult bulunamadı.
+
+Sorgulanıyor → Central Norte vs San Telmo | Primera Nacional | 2025-05-13
+  → Eşleşen MatchResult bulunamadı.
+
+Sorgulanıyor → Real Soacha vs Huila | Primera B | 2025-05-13
+  → Eşleşen MatchResult bulunamadı.
+
+Sorgulanıyor → Futbol Consultants Moravia vs Inter San Carlos | Liga de Ascenso | 2025-05-13
+  → Eşleşen MatchResult bulunamadı.
+
+Sorgulanıyor → América W vs Pachuca W | Liga MX Femenil | 2025-05-13
+  → Eşleşen MatchResult bulunamadı.
+
+Sorgulanıyor → Coachella vs Stars FC | USL League Two | 2025-05-13

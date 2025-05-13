@@ -161,29 +161,45 @@
   </header>
 
   <!-- Maç Başlık ve Özet Bölümü -->
-  <div class="match-header text-center">
-    <div class="container">
-      <div class="row align-items-center">
-        <!-- Ev Sahibi -->
-        <div class="col-md-4 text-end">
-          <div class="d-flex justify-content-end align-items-center">
-            <img src="{% static 'logos/'|add:match.home_team_logo %}" alt="{{ match.HomeTeam }} Logo" class="team-logo me-2">
-            <p class="team-name mb-0">{{ match.HomeTeam }}</p>
-          </div>
-        </div>
-        <!-- Skor ve Tarih -->
-        <div class="col-md-4">
-          <div class="score">VS</div>
-          <b><p class="match-date">{{ match.display_date|to_turkish_date }} - {{ match.TIME }}</p></b>
-        </div>
-        <!-- Deplasman -->
-        <div class="col-md-4 text-start">
-          <div class="d-flex justify-content-start align-items-center">
-            <p class="team-name mb-0">{{ match.AwayTeam }}</p>
-            <img src="{% static 'logos/'|add:match.away_team_logo %}" alt="{{ match.AwayTeam }} Logo" class="team-logo ms-2">
-          </div>
+<div class="match-header text-center">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Ev Sahibi -->
+      <div class="col-md-4 text-end">
+        <div class="d-flex justify-content-end align-items-center">
+          <img src="{% static 'logos/'|add:match.home_team_logo %}"
+               alt="{{ match.HomeTeam }} Logo"
+               class="team-logo me-2">
+          <p class="team-name mb-0 d-inline">{{ match.HomeTeam }}</p>
+          
         </div>
       </div>
+      <!-- Skor ve Tarih -->
+      <div class="col-md-4">
+        <div class="score">
+          {% if match.FT_HOMESCORE is not None and match.FT_AWAYSCORE is not None %}
+            {{ match.FT_HOMESCORE }} - {{ match.FT_AWAYSCORE }}
+          {% else %}
+            VS
+          {% endif %}
+        </div>
+        <b>
+          <p class="match-date">
+            {{ match.display_date|to_turkish_date }} - {{ match.TIME }}
+          </p>
+        </b>
+      </div>
+      <!-- Deplasman -->
+      <div class="col-md-4 text-start">
+        <div class="d-flex justify-content-start align-items-center">
+          <p class="team-name mb-0 d-inline">{{ match.AwayTeam }}</p>
+          
+          <img src="{% static 'logos/'|add:match.away_team_logo %}"
+               alt="{{ match.AwayTeam }} Logo"
+               class="team-logo ms-2">
+        </div>
+      </div>
+    </div>
       <!-- Maç Sonucu Olasılıkları (Progress Bar) -->
       <div class="row mt-3">
         <div class="col">
@@ -192,7 +208,7 @@
               MS1: {{ match.MS1 }}%
             </div>
             <div class="progress-bar bg-secondary" role="progressbar" style="width: {{ match.MSX }}%;" aria-valuenow="{{ match.MSX }}" aria-valuemin="0" aria-valuemax="100">
-              MSX: {{ match.MSX }}%
+              MSX: {{ match.MSX }}% 
             </div>
             <div class="progress-bar bg-primary" role="progressbar" style="width: {{ match.MS2 }}%;" aria-valuenow="{{ match.MS2 }}" aria-valuemin="0" aria-valuemax="100">
               MS2: {{ match.MS2 }}%

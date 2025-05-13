@@ -1,0 +1,299 @@
+{% load static %}
+{% load custom_filters %}
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description"
+    content="TahminAI ile akıllı tahminler yapın, yüksek kazanç fırsatlarını yakalayın. Gerçek zamanlı veri analizi ve yapay zeka destekli modelimizle sporun geleceğini şekillendirin.">
+  <title>TahminAI</title>
+  <meta name="viewport" content="initial-scale=0.7, maximum-scale=1.0, user-scalable=no" />
+  <link rel="icon" href="{% static 'logo.png' %}" type="image/png">
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <!-- Proje CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+  <!-- jQuery UI ve Datepicker CSS -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+  <style>
+    /* Genel stil ayarları */
+    body {
+      font-size: 1.1rem;
+    }
+
+    .my-header {
+      background-color: #000;
+      padding: 1rem 0;
+    }
+
+    .my-nav .nav-link {
+      color: #fff !important;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 1rem;
+    }
+
+    .my-nav .nav-link:hover {
+      color: #ddd !important;
+    }
+
+    .container {
+      max-width: 60%;
+      padding: 0 1.5rem;
+    }
+
+    .card {
+      width: 80%;
+      margin: 0.5rem auto;
+      padding: 0.5rem;
+    }
+
+    .card-body {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+
+    /* —— Hover’lı skor stili —— */
+    .score-container {
+      position: relative;
+      display: inline-block;
+      /* içerik kadar genişlik */
+      cursor: pointer;
+      /* max-width ve padding kaldırıldı */
+    }
+
+    .score-text {
+      padding: 0.2rem 0.5rem;
+      background: white;
+      font-weight: bold;
+      z-index: 1;
+      display: inline-block;
+    }
+
+    .score-probs {
+      position: absolute;
+      bottom: 100%;
+      /* skorun hemen üstünde */
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.25rem;
+      background: white;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.25rem;
+      white-space: nowrap;
+
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 10;
+    }
+
+    .score-container:hover .score-probs {
+      pointer-events: auto;
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="my-header">
+    <div class="container d-flex align-items-center justify-content-between">
+      <nav>
+        <ul class="nav my-nav">
+          <li class="nav-item"><a href="/home" class="nav-link">Anasayfa</a></li>
+          <li class="nav-item"><a href="/home#hakkimizda" class="nav-link">Hakkımızda</a></li>
+          <li class="nav-item"><a href="/home#bizeulas" class="nav-link">İletişim</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container my-4">
+    <div class="zoom-wrapper">
+      <!-- Tarih Butonları -->
+      <div class="mb-3 text-center">
+        {% for d in date_list %}
+        <a href="?date={{ d }}"
+          class="btn {% if d == selected_date %}btn-primary{% else %}btn-outline-primary{% endif %} btn-sm me-1 mb-1">
+          {{ d|to_turkish_date }}
+        </a>
+        {% endfor %}
+        <button type="button" class="btn btn-sm btn-outline-secondary me-1 mb-1" data-bs-toggle="modal"
+          data-bs-target="#datepickerModal">
+          Takvim
+        </button>
+      </div>
+    </div>
+  </div>    
+
+      <!-- Tarih Modal -->
+      <div class="modal fade" id="datepickerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width:300px;">
+          <div class="modal-content" style="height:20rem;">
+            <div class="modal-header">
+              <h5 class="modal-title">Tarih Seçin</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <div id="inline-datepicker"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="goDateBtn" class="btn btn-primary">Git</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lig Kartları -->
+      {% for league_name, matches in all_results.items %}
+      {% if matches %}
+      <h4 class="fw-bold mb-2" style="margin-left:10%; width: 60%;">
+        {% for key, formatted in league_names.items %}
+        {% if key == league_name %}
+        <img src="{% static 'logos/'|add:league_name|add:'.png' %}" style="height:2.2rem;"
+          onerror="this.style.display='none';">
+        <span class="ms-2">{{ formatted }}</span>
+        {% endif %}
+        {% endfor %}
+      </h4>
+      <div>
+
+        {% for match in matches %}
+        <div class="card mb-2" style="width: 60%;">
+          <div class="card-body d-flex align-items-center">
+            <div class="me-3 text-muted">
+              <strong>{{ match.TIME }}</strong>
+            </div>
+            <div class="team-info flex-fill text-center">
+              <!-- Ev sahibi -->
+              <span class="fw-semibold ellipsis">
+                <img src="{% static 'logos/'|add:match.home_team_logo %}" style="height:35px;"
+                  onerror="this.style.display='none';">
+                {{ match.HomeTeam }}
+              </span>
+
+              <!-- Orta kısım: skor + hover’ta pencereler -->
+              <div class="score-container mx-2">
+                {% if match.FT_HOMESCORE is not None and match.FT_AWAYSCORE is not None %}
+                <div class="score-text text-danger">
+                  {{ match.FT_HOMESCORE }} – {{ match.FT_AWAYSCORE }}
+                </div>
+                <div class="score-probs">
+                  <span class="badge bg-danger">1: {{ match.MS1 }}%</span>
+                  <span class="badge bg-secondary">X: {{ match.MSX }}%</span>
+                  <span class="badge bg-primary">2: {{ match.MS2 }}%</span>
+                </div>
+                {% else %}
+                <div class="score-text text-danger">
+                  %{{ match.MS1 }} – %{{ match.MS2 }}
+                </div>
+                {% endif %}
+              </div>
+
+              <!-- Deplasman -->
+              <span class="fw-semibold ellipsis">
+                <img src="{% static 'logos/'|add:match.away_team_logo %}" style="height:35px;"
+                  onerror="this.style.display='none';">
+                {{ match.AwayTeam }}
+              </span>
+            </div>
+            <div class="ms-auto">
+              <a href="{% url 'details' match.id %}" class="btn btn-sm btn-outline-dark">Detaylar</a>
+            </div>
+          </div>
+        
+
+
+    </div>
+  </div>
+  {% endfor %}
+
+  <!-- Reklam Alanı -->
+  <div class="text-center my-4">
+    <div class="d-none d-md-block">
+      <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+        data-ad-client="ca-pub-9818130828655195" data-ad-slot="5239954048"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <div class="d-block d-md-none">
+      <ins class="adsbygoogle" style="display:inline-block;width:320px;height:100px"
+        data-ad-client="ca-pub-9818130828655195" data-ad-slot="9693408213"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+  </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer" style="background-color:#000; padding:1rem 0;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div style="border:2px solid red; background:#ffe6e6; padding:.5rem; border-radius:5%;">
+            <h4 class="text-danger mb-2">UYARI &amp; SORUMLULUK REDDİ</h4>
+            <p style="font-size:.9rem; color:#000; margin:0;">
+              Bu sitede yer alan veriler, tahminler ve analizler tamamen otomatik olarak oluşturulmaktadır...
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 text-end">
+          <h5 class="text-white">Bize Ulaşın</h5>
+          <form action="{% url 'newsletter' %}" method="POST">
+            {% csrf_token %}
+            <textarea name="message" rows="3" style="width:90%;" required></textarea>
+            <button type="submit" class="btn btn-primary">Gönder</button>
+          </form>
+        </div>
+      </div>
+      <div class="text-center mt-2">
+        <p class="text-white mb-0" style="font-size:.9rem;">
+          &copy;
+          <script>document.write(new Date().getFullYear());</script> Tüm Hakları Saklıdır | Made by
+          <a href="https://www.linkedin.com/in/furkanylmaz1/" target="_blank" style="color:aqua;">Furkan Yılmaz</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS Dosyaları -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  <script>
+    $(function () {
+      let selectedDate = null;
+      $('#inline-datepicker').datepicker({
+        format: "yyyy-mm-dd",
+        todayHighlight: true,
+        autoclose: false,
+        language: "tr"
+      }).on('changeDate', function (e) {
+        selectedDate = e.format('yyyy-mm-dd');
+      });
+      $("#goDateBtn").click(function () {
+        if (selectedDate) {
+          window.location.href = "?date=" + selectedDate;
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,535 @@
+
+=== ALBANIA (4) ===
+ • Egnatia Rrogozhinë
+ • Partizani Tirana
+ • Tirana
+ • Vllaznia Shkodër
+
+=== ANDORRA (3) ===
+ • Atlètic Club d'Escaldes
+ • Inter Club d'Escaldes
+ • UE Santa Coloma
+
+=== ARMENIA (4) ===
+ • Artsakh
+ • Banants
+ • FC Avan Academy
+ • Pyunik
+
+=== AUSTRIA (5) ===
+ • Austria Wien
+ • LASK Linz
+ • Rapid Wien
+ • Salzburg
+ • Sturm Graz
+
+=== AZERBAIJAN (4) ===
+ • Qarabağ
+ • Sabah
+ • Sumqayıt
+ • Zira
+
+=== BELARUS (4) ===
+ • Dinamo Minsk
+ • Isloch
+ • Neman Grodno
+ • Torpedo BelAZ
+
+=== BELGIUM (16) ===
+ • Beerschot-Wilrijk
+ • Cercle Brugge
+ • Club Brugge
+ • FCV Dender EH
+ • KAA Gent
+ • KRC Genk
+ • KV Kortrijk
+ • KV Mechelen
+ • KVC Westerlo
+ • OH Leuven
+ • RSC Anderlecht
+ • Royal Antwerp FC
+ • Sint-Truiden
+ • Sporting Charleroi
+ • Standard Liège
+ • Union Saint-Gilloise
+
+=== BOSNIA AND HERZEGOVINA (4) ===
+ • Borac Banja Luka
+ • Sarajevo
+ • Velež
+ • Zrinjski
+
+=== BULGARIA (4) ===
+ • Botev Plovdiv
+ • CSKA 1948 Sofia
+ • Cherno More
+ • Ludogorets
+
+=== CROATIA (4) ===
+ • Dinamo Zagreb
+ • Hajduk Split
+ • Osijek
+ • Rijeka
+
+=== CYPRUS (4) ===
+ • AEK Larnaca
+ • APOEL
+ • Omonia Nicosia
+ • Paphos
+
+=== CZECH REPUBLIC (5) ===
+ • Baník Ostrava
+ • Mladá Boleslav
+ • Slavia Praha
+ • Sparta Praha
+ • Viktoria Plzeň
+
+=== DENMARK (4) ===
+ • Brøndby
+ • København
+ • Midtjylland
+ • Silkeborg
+
+=== ENGLAND (88) ===
+ • AFC Bournemouth
+ • AFC Wimbledon
+ • Accrington Stanley
+ • Arsenal
+ • Aston Villa
+ • Barnsley
+ • Barrow
+ • Birmingham City
+ • Blackburn Rovers
+ • Blackpool
+ • Bolton Wanderers
+ • Bradford City
+ • Brentford
+ • Brighton & Hove Albion
+ • Bristol City
+ • Bristol Rovers
+ • Bromley
+ • Burnley
+ • Burton Albion
+ • Cambridge United
+ • Carlisle United
+ • Charlton Athletic
+ • Chelsea
+ • Cheltenham Town
+ • Chesterfield
+ • Colchester United
+ • Coventry City
+ • Crawley Town
+ • Crewe Alexandra
+ • Crystal Palace
+ • Derby County
+ • Doncaster Rovers
+ • Everton
+ • Exeter City
+ • Fleetwood Town
+ • Fulham
+ • Gillingham
+ • Grimsby Town
+ • Harrogate Town
+ • Huddersfield Town
+ • Hull City
+ • Ipswich Town
+ • Leeds United
+ • Leicester City
+ • Leyton Orient
+ • Lincoln City
+ • Liverpool
+ • Luton Town
+ • Manchester City
+ • Manchester United
+ • Mansfield Town
+ • Middlesbrough
+ • Millwall
+ • Milton Keynes Dons
+ • Morecambe
+ • Newcastle United
+ • Northampton Town
+ • Norwich City
+ • Nottingham Forest
+ • Notts County
+ • Oxford United
+ • Peterborough United
+ • Plymouth Argyle
+ • Port Vale
+ • Portsmouth
+ • Preston North End
+ • Queens Park Rangers
+ • Reading
+ • Rotherham United
+ • Salford City
+ • Sheffield United
+ • Sheffield Wednesday
+ • Shrewsbury Town
+ • Southampton
+ • Stevenage
+ • Stockport County
+ • Stoke City
+ • Sunderland
+ • Swindon Town
+ • Tottenham Hotspur
+ • Tranmere Rovers
+ • Walsall
+ • Watford
+ • West Bromwich Albion
+ • West Ham United
+ • Wigan Athletic
+ • Wolverhampton Wanderers
+ • Wycombe Wanderers
+
+
+
+
+
+
+=== FRANCE (17) ===
+ • Angers SCO
+ • Auxerre
+ • Brest
+ • Le Havre
+ • Lens
+ • Lille
+ • Montpellier
+ • Nantes
+ • Nice
+ • Olympique Lyonnais
+ • Olympique Marseille
+ • PSG
+ • Reims
+ • Rennes
+ • Saint-Étienne
+ • Strasbourg
+ • Toulouse
+
+
+=== GERMANY (36) ===
+ • Augsburg
+ • Bayer Leverkusen
+ • Bayern München
+ • Bochum
+ • Borussia Dortmund
+ • Borussia M'gladbach
+ • Darmstadt 98
+ • Eintracht Braunschweig
+ • Eintracht Frankfurt
+ • Elversberg
+ • Fortuna Düsseldorf
+ • Freiburg
+ • Greuther Fürth
+ • Hamburger SV
+ • Hannover 96
+ • Heidenheim
+ • Hertha BSC
+ • Hoffenheim
+ • Holstein Kiel
+ • Jahn Regensburg
+ • Kaiserslautern
+ • Karlsruher SC
+ • Köln
+ • Magdeburg
+ • Mainz 05
+ • Nürnberg
+ • Paderborn
+ • Preußen Münster
+ • RB Leipzig
+ • Schalke 04
+ • St. Pauli
+ • Stuttgart
+ • Ulm
+ • Union Berlin
+ • Werder Bremen
+ • Wolfsburg
+
+
+
+
+
+
+
+
+
+
+
+
+
+=== ITALY (20) ===
+ • AC Milan
+ • Atalanta
+ • Bologna
+ • Cagliari
+ • Como
+ • Empoli
+ • Fiorentina
+ • Genoa
+ • Hellas Verona
+ • Inter Milan
+ • Juventus
+ • Lazio
+ • Lecce
+ • Monza
+ • Napoli
+ • Parma
+ • Roma
+ • Torino
+ • Udinese
+ • Venezia
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=== MONACO (1) ===
+ • Monaco
+
+
+
+=== NETHERLANDS (18) ===
+ • AZ
+ • Ajax
+ • Almere City
+ • Feyenoord
+ • Fortuna Sittard
+ • Go Ahead Eagles
+ • Groningen
+ • Heerenveen
+ • Heracles
+ • NAC Breda
+ • NEC
+ • PEC Zwolle
+ • PSV
+ • RKC Waalwijk
+ • Sparta Rotterdam
+ • Twente
+ • Utrecht
+ • Willem II
+
+
+
+
+
+
+=== PORTUGAL (18) ===
+ • AVS
+ • Benfica
+ • Boavista FC
+ • CD Nacional
+ • Casa Pia
+ • Estrela Amadora
+ • FC Arouca
+ • Famalicão
+ • Farense
+ • GD Estoril Praia
+ • Gil Vicente
+ • Moreirense FC
+ • Porto
+ • Rio Ave FC
+ • Santa Clara
+ • Sporting Braga
+ • Sporting CP
+ • Vitória Guimarães
+
+
+
+
+
+
+
+
+
+
+
+
+=== SPAIN (20) ===
+ • Athletic Club Bilbao
+ • Atlético Madrid
+ • CA Osasuna
+ • Celta de Vigo
+ • Deportivo Alavés
+ • FC Barcelona
+ • Getafe CF
+ • Girona FC
+ • Leganés
+ • RCD Espanyol
+ • RCD Mallorca
+ • Rayo Vallecano
+ • Real Betis
+ • Real Madrid
+ • Real Sociedad
+ • Real Valladolid
+ • Sevilla FC
+ • UD Las Palmas
+ • Valencia CF
+ • Villarreal
+
+
+=== TURKEY (155) ===
+ • 1074 Çankırıspor
+ • 12 Bingölspor
+ • 1926 Polatlı Belediye
+ • 1954 Kelkit Belediyespor
+ • 24 Erzincanspor
+ • 68 Aksaray Belediyespor
+ • 76 Iğdır Belediyespor
+ • Adana 1954 FK
+ • Adana Demirspor
+ • Adanaspor
+ • Adıyaman 1954
+ • Afjet Afyonspor
+ • Alanyaspor
+ • Aliağa FAŞ
+ • Altay
+ • Altınordu
+ • Amed
+ • Anadolu Selçukspor
+ • Anadolu Üniversitesi
+ • Ankara Adliyespor
+ • Ankara Demirspor
+ • Ankaragücü
+ • Antalyaspor
+ • Arnavutköy Belediyespor
+ • Artvin Hopaspor
+ • Ayvalıkgücü Belediyespor
+ • Ağrı 1970
+ • BB Bodrumspor
+ • BB Erzurumspor
+ • Balıkesirspor
+ • Bandırmaspor
+ • Bartınspor
+ • Batman Petrolspor
+ • Bayburt İÖİ
+ • Bergama Belediyespor
+ • Beykoz İshaklıspor
+ • Beşiktaş
+ • Bitlis Özgüzelderespor
+ • Boluspor
+ • Bozüyük Vitraspor
+ • Bucak Oğuzhanspor
+ • Bursa Yıldırımspor
+ • Bursaspor
+ • Denizlispor
+ • Derincespor
+ • Dersimspor
+ • Diyarbekirspor
+ • Düzcespor
+ • Edirnespor
+ • Efeler 09 Spor
+ • Elaziz Belediyespor
+ • Elazığspor
+ • Erbaaspor
+ • Ergene Velimeşespor
+ • Erokspor
+ • Erzin Belediyespor
+ • Etimesgut Belediyespor
+ • Eyüpspor
+ • Fatih Karagümrük
+ • Fatsa Belediyespor
+ • Fenerbahçe
+ • Fethiyespor
+ • Galatasaray
+ • Gazişehir Gaziantep
+ • Gençlerbirliği
+ • Giresunspor
+ • Göztepe
+ • Hakkari Zapspor
+ • Halide Edip Adıvar
+ • Hatayspor
+ • Hekimoğlu Trabzon
+ • Isparta Davrazspor
+ • Kahramanmaraş İstiklalsp
+ • Kahramanmaraşspor
+ • Karabük İdman Yurdu
+ • Karacabey Birlikspor
+ • Karaköprü Belediyespor
+ • Karaman Belediyespor
+ • Kars 36
+ • Kartal Bulvarspor
+ • Karşıyaka
+ • Kastamonuspor 1966
+ • Kasımpaşa
+ • Kayserispor
+ • Kepez Belediyespor
+ • Kestelspor
+ • Keçiörengücü
+ • Kilis Belediyespor
+ • Kocaelispor
+ • Konyaspor
+ • Kurtalanspor
+ • Kuşadasıspor
+ • Kütahyaspor
+ • Küçükçekmece Sinopspor
+ • Kırklarelispor
+ • Kırıkkale Büyük Anadolu
+ • Kırşehir Belediyespor
+ • Manisa BBSK
+ • Mardin BB
+ • Mazıdağı Fosfatspor
+ • Menemen Belediyespor
+ • Muğlaspor
+ • Muş Menderesspor
+ • Nazilli Belediyespor
+ • Nevşehir Belediyespor
+ • Nilüfer Belediye
+ • Niğde Belediyesispor
+ • Orduspor 1967
+ • Osmaniyespor
+ • Osmanlıspor
+ • Pazarspor
+ • Pendikspor
+ • Rizespor
+ • Sakaryaspor
+ • Samsunspor
+ • Sarıyer
+ • Sebat Gençlikspor
+ • Serhat Ardahanspor
+ • Serik Belediyespor
+ • Silifke Belediyespor
+ • Silivrispor
+ • Sinopspor
+ • Sivasspor
+ • Somaspor
+ • Talasgücü Belediyespor
+ • Tepecikspor
+ • Tire 1922 Spor
+ • Tire 2021 FK
+ • Tokat Bld Plevnespor
+ • Trabzonspor
+ • Turgutluspor
+ • Tuzlaspor
+ • Türk Metal 1963
+ • Utaş Uşakspor
+ • Van BB
+ • Viranşehir Belediyespor
+ • Viven Bornova
+ • Yalova Yeşilovaspor
+ • Yeni Amasyaspor
+ • Yeni Malatyaspor
+ • Yeni Orduspor
+ • Yeni Çanspor
+ • Yozgat Bld Bozokspor
+ • Zonguldak Kömürspor
+ • Çayelispor
+ • Çorluspor 1947
+ • Çorum Belediyespor
+ • Ümraniyespor
+ • İnegöl Kafkas Gençlik
+ • İnegölspor
+ • İstanbul Başakşehir
+ • İstanbulspor
+ • İçel İdmanyurdu Spor Kulübü
+ • Şanlıurfaspor
+ • Şırnak İdmanyurdu
+
+

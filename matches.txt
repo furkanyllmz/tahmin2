@@ -1,0 +1,971 @@
+2025-02-28 | belgium-pro-league | Sporting Charleroi – KRC Genk
+2025-03-01 | belgium-pro-league | Cercle Brugge – Royal Antwerp FC
+2025-04-20 | belgium-pro-league | KAA Gent – Club Brugge
+2025-04-06 | belgium-pro-league | Sint-Truiden – KV Kortrijk
+2025-03-01 | belgium-pro-league | Union Saint-Gilloise – FCV Dender EH
+2025-02-28 | france-ligue-1 | Monaco – Reims
+2025-03-01 | france-ligue-1 | Saint-Étienne – Nice
+2025-03-01 | france-ligue-1 | Lens – Le Havre
+2025-03-01 | france-ligue-1 | PSG – Lille
+2025-02-28 | netherlands-eredivisie | RKC Waalwijk – Fortuna Sittard
+2025-03-01 | netherlands-eredivisie | Utrecht – NAC Breda
+2025-03-01 | netherlands-eredivisie | Go Ahead Eagles – PSV
+2025-03-01 | netherlands-eredivisie | Groningen – Twente
+2025-03-01 | netherlands-eredivisie | Feyenoord – NEC
+2025-02-28 | turkey-1-lig | Gençlerbirliği – Manisa BBSK
+2025-03-01 | turkey-1-lig | Yeni Malatyaspor – Şanlıurfaspor
+2025-03-01 | turkey-1-lig | Erokspor – Amed
+2025-03-01 | turkey-1-lig | 76 Iğdır Belediyespor – Çorum Belediyespor
+2025-03-01 | turkey-1-lig | Pendikspor – Keçiörengücü
+2025-03-01 | turkey-super-lig | Adana Demirspor – BB Bodrumspor
+2025-03-01 | turkey-super-lig | Beşiktaş – Kayserispor
+2025-02-27 | turkey-turkish-cup | Gazişehir Gaziantep – Fenerbahçe
+2025-02-27 | turkey-turkish-cup | Kasımpaşa – Göztepe
+2025-02-27 | turkey-turkish-cup | BB Erzurumspor – İstanbulspor
+2025-02-27 | turkey-turkish-cup | Galatasaray – Konyaspor
+2025-03-29 | turkey-super-lig | Eyüpspor – İstanbul Başakşehir
+2025-02-27 | england-premier-league | West Ham United – Leicester City
+2025-02-28 | spain-la-liga | Real Valladolid – UD Las Palmas
+2025-03-01 | spain-la-liga | Girona FC – Celta de Vigo
+2025-03-01 | spain-la-liga | Rayo Vallecano – Sevilla FC
+2025-03-01 | spain-la-liga | Real Betis – Real Madrid
+2025-03-01 | spain-la-liga | Atlético Madrid – Athletic Club Bilbao
+2025-02-28 | germany-2-bundesliga | Fortuna Düsseldorf – Greuther Fürth
+2025-02-28 | germany-2-bundesliga | Schalke 04 – Preußen Münster
+2025-03-01 | germany-2-bundesliga | Nürnberg – Hannover 96
+2025-03-01 | germany-2-bundesliga | Kaiserslautern – Jahn Regensburg
+2025-03-01 | germany-2-bundesliga | Eintracht Braunschweig – Ulm
+2025-03-01 | germany-2-bundesliga | Karlsruher SC – Köln
+2025-02-28 | germany-bundesliga | Stuttgart – Bayern München
+2025-03-01 | germany-bundesliga | RB Leipzig – Mainz 05
+2025-03-01 | germany-bundesliga | Heidenheim – Borussia M'gladbach
+2025-03-01 | germany-bundesliga | Werder Bremen – Wolfsburg
+2025-03-01 | germany-bundesliga | Bochum – Hoffenheim
+2025-03-01 | germany-bundesliga | St. Pauli – Borussia Dortmund
+2025-03-01 | germany-bundesliga | Eintracht Frankfurt – Bayer Leverkusen
+2025-02-27 | italy-serie-a | Bologna – AC Milan
+2025-02-28 | italy-serie-a | Fiorentina – Lecce
+2025-03-01 | italy-serie-a | Atalanta – Venezia
+2025-03-01 | italy-serie-a | Napoli – Inter Milan
+2025-03-01 | italy-serie-a | Udinese – Parma
+2025-03-02 | germany-2-bundesliga | Paderborn – Hamburger SV
+2025-03-02 | germany-2-bundesliga | Elversberg – Hertha BSC
+2025-03-02 | germany-2-bundesliga | Magdeburg – Darmstadt 98
+2025-03-02 | germany-bundesliga | Union Berlin – Holstein Kiel
+2025-03-02 | germany-bundesliga | Augsburg – Freiburg
+2025-03-02 | france-ligue-1 | Olympique Lyonnais – Brest
+2025-03-02 | france-ligue-1 | Montpellier – Rennes
+2025-03-02 | france-ligue-1 | Auxerre – Strasbourg
+2025-03-02 | france-ligue-1 | Angers SCO – Toulouse
+2025-03-02 | france-ligue-1 | Olympique Marseille – Nantes
+2025-03-02 | turkey-1-lig | Bandırmaspor – Ümraniyespor
+2025-03-02 | turkey-1-lig | Boluspor – BB Erzurumspor
+2025-03-02 | turkey-1-lig | Adanaspor – Ankaragücü
+2025-03-02 | turkey-1-lig | Sakaryaspor – Fatih Karagümrük
+2025-03-03 | turkey-1-lig | Kocaelispor – İstanbulspor
+2025-03-04 | turkey-1-lig | Manisa BBSK – 76 Iğdır Belediyespor
+2025-03-04 | turkey-1-lig | Amed – Gençlerbirliği
+2025-03-05 | turkey-1-lig | Keçiörengücü – Erokspor
+2025-03-05 | turkey-1-lig | Çorum Belediyespor – Boluspor
+2025-03-05 | turkey-1-lig | Şanlıurfaspor – Adanaspor
+2025-03-05 | turkey-1-lig | Fatih Karagümrük – Bandırmaspor
+2025-03-06 | turkey-1-lig | BB Erzurumspor – Pendikspor
+2025-03-06 | turkey-1-lig | İstanbulspor – Sakaryaspor
+2025-03-06 | turkey-1-lig | Ankaragücü – Yeni Malatyaspor
+2025-03-06 | turkey-1-lig | Ümraniyespor – Kocaelispor
+2025-03-02 | turkey-super-lig | Rizespor – Alanyaspor
+2025-03-02 | turkey-super-lig | Kasımpaşa – Galatasaray
+2025-03-02 | turkey-super-lig | Fenerbahçe – Antalyaspor
+2025-03-03 | turkey-super-lig | Gazişehir Gaziantep – Eyüpspor
+2025-03-03 | turkey-super-lig | Konyaspor – Trabzonspor
+2025-03-03 | turkey-super-lig | Göztepe – Samsunspor
+2025-03-03 | turkey-super-lig | İstanbul Başakşehir – Sivasspor
+2025-03-02 | belgium-pro-league | Beerschot-Wilrijk – KV Mechelen
+2025-03-02 | belgium-pro-league | Standard Liège – RSC Anderlecht
+2025-05-16 | belgium-pro-league | OH Leuven – KVC Westerlo
+2025-03-02 | italy-serie-a | Monza – Torino
+2025-03-02 | italy-serie-a | Bologna – Cagliari
+2025-03-02 | italy-serie-a | Genoa – Empoli
+2025-03-02 | italy-serie-a | Roma – Como
+2025-03-02 | italy-serie-a | AC Milan – Lazio
+2025-03-03 | italy-serie-a | Juventus – Hellas Verona
+2025-03-02 | netherlands-eredivisie | Heerenveen – AZ
+2025-03-02 | netherlands-eredivisie | Almere City – Ajax
+2025-03-02 | netherlands-eredivisie | Heracles – PEC Zwolle
+2025-03-02 | netherlands-eredivisie | Sparta Rotterdam – Willem II
+2025-03-02 | spain-la-liga | Leganés – Getafe CF
+2025-03-02 | spain-la-liga | FC Barcelona – Real Sociedad
+2025-03-02 | spain-la-liga | RCD Mallorca – Deportivo Alavés
+2025-03-02 | spain-la-liga | CA Osasuna – Valencia CF
+2025-03-03 | spain-la-liga | Villarreal – RCD Espanyol
+2025-03-04 | europe-uefa-champions-league | Club Brugge – Aston Villa
+2025-03-04 | europe-uefa-champions-league | Real Madrid – Atlético Madrid
+2025-03-04 | europe-uefa-champions-league | PSV – Arsenal
+2025-03-04 | europe-uefa-champions-league | Borussia Dortmund – Lille
+2025-03-05 | europe-uefa-champions-league | Feyenoord – Inter Milan
+2025-03-05 | europe-uefa-champions-league | Bayern München – Bayer Leverkusen
+2025-03-05 | europe-uefa-champions-league | PSG – Liverpool
+2025-03-05 | europe-uefa-champions-league | Benfica – FC Barcelona
+2025-03-06 | europe-uefa-europa-conference-league | Real Betis – Vitória Guimarães
+2025-03-06 | europe-uefa-europa-conference-league | Panathinaikos – Fiorentina
+2025-03-06 | europe-uefa-europa-conference-league | Molde – Legia Warszawa
+2025-03-06 | europe-uefa-europa-conference-league | København – Chelsea
+2025-03-06 | europe-uefa-europa-conference-league | Jagiellonia Białystok – Cercle Brugge
+2025-03-06 | europe-uefa-europa-conference-league | Celje – Lugano
+2025-03-06 | europe-uefa-europa-conference-league | Borac Banja Luka – Rapid Wien
+2025-03-06 | europe-uefa-europa-conference-league | Paphos – Djurgården
+2025-03-06 | europe-uefa-europa-league | AZ – Tottenham Hotspur
+2025-03-06 | europe-uefa-europa-league | Fenerbahçe – Rangers
+2025-03-06 | europe-uefa-europa-league | FCSB – Olympique Lyonnais
+2025-03-06 | europe-uefa-europa-league | Real Sociedad – Manchester United
+2025-03-06 | europe-uefa-europa-league | Viktoria Plzeň – Lazio
+2025-03-06 | europe-uefa-europa-league | FK Bodo - Glimt – Olympiakos Piraeus
+2025-03-06 | europe-uefa-europa-league | Ajax – Eintracht Frankfurt
+2025-03-06 | europe-uefa-europa-league | Roma – Athletic Club Bilbao
+2025-03-08 | spain-la-liga | Celta de Vigo – Leganés
+2025-03-08 | spain-la-liga | Deportivo Alavés – Villarreal
+2025-03-08 | spain-la-liga | Valencia CF – Real Valladolid
+2025-03-08 | spain-la-liga | FC Barcelona – CA Osasuna
+2025-03-09 | spain-la-liga | Getafe CF – Atlético Madrid
+2025-03-09 | spain-la-liga | Real Madrid – Rayo Vallecano
+2025-03-09 | spain-la-liga | Athletic Club Bilbao – RCD Mallorca
+2025-03-09 | spain-la-liga | Real Betis – UD Las Palmas
+2025-03-09 | spain-la-liga | Real Sociedad – Sevilla FC
+2025-03-10 | spain-la-liga | RCD Espanyol – Girona FC
+2025-03-07 | france-ligue-1 | Toulouse – Monaco
+2025-03-08 | france-ligue-1 | Rennes – PSG
+2025-03-08 | france-ligue-1 | Lille – Montpellier
+2025-03-08 | france-ligue-1 | Olympique Marseille – Lens
+2025-03-09 | france-ligue-1 | Brest – Angers SCO
+2025-03-09 | france-ligue-1 | Le Havre – Saint-Étienne
+2025-03-09 | france-ligue-1 | Reims – Auxerre
+2025-03-09 | france-ligue-1 | Nantes – Strasbourg
+2025-03-09 | france-ligue-1 | Nice – Olympique Lyonnais
+2025-03-08 | england-premier-league | Nottingham Forest – Manchester City
+2025-03-08 | england-premier-league | Brighton & Hove Albion – Fulham
+2025-03-08 | england-premier-league | Crystal Palace – Ipswich Town
+2025-03-08 | england-premier-league | Liverpool – Southampton
+2025-03-08 | england-premier-league | Brentford – Aston Villa
+2025-03-08 | england-premier-league | Wolverhampton Wanderers – Everton
+2025-03-09 | england-premier-league | Chelsea – Leicester City
+2025-03-09 | england-premier-league | Tottenham Hotspur – AFC Bournemouth
+2025-03-09 | england-premier-league | Manchester United – Arsenal
+2025-03-10 | england-premier-league | West Ham United – Newcastle United
+2025-03-07 | germany-2-bundesliga | Darmstadt 98 – Karlsruher SC
+2025-03-07 | germany-2-bundesliga | Kaiserslautern – Elversberg
+2025-03-08 | germany-2-bundesliga | Greuther Fürth – Magdeburg
+2025-03-08 | germany-2-bundesliga | Hertha BSC – Schalke 04
+2025-03-08 | germany-2-bundesliga | Ulm – Köln
+2025-03-08 | germany-2-bundesliga | Hamburger SV – Fortuna Düsseldorf
+2025-03-09 | germany-2-bundesliga | Hannover 96 – Eintracht Braunschweig
+2025-03-09 | germany-2-bundesliga | Preußen Münster – Nürnberg
+2025-03-09 | germany-2-bundesliga | Jahn Regensburg – Paderborn
+2025-03-07 | germany-bundesliga | Borussia M'gladbach – Mainz 05
+2025-03-08 | germany-bundesliga | Bayer Leverkusen – Werder Bremen
+2025-03-08 | germany-bundesliga | Bayern München – Bochum
+2025-03-08 | germany-bundesliga | Borussia Dortmund – Augsburg
+2025-03-08 | germany-bundesliga | Wolfsburg – St. Pauli
+2025-03-08 | germany-bundesliga | Holstein Kiel – Stuttgart
+2025-03-08 | germany-bundesliga | Freiburg – RB Leipzig
+2025-03-09 | germany-bundesliga | Eintracht Frankfurt – Union Berlin
+2025-03-09 | germany-bundesliga | Hoffenheim – Heidenheim
+2025-03-11 | europe-uefa-champions-league | FC Barcelona – Benfica
+2025-03-11 | europe-uefa-champions-league | Bayer Leverkusen – Bayern München
+2025-03-11 | europe-uefa-champions-league | Inter Milan – Feyenoord
+2025-03-11 | europe-uefa-champions-league | Liverpool – PSG
+2025-03-12 | europe-uefa-champions-league | Lille – Borussia Dortmund
+2025-03-12 | europe-uefa-champions-league | Aston Villa – Club Brugge
+2025-03-12 | europe-uefa-champions-league | Atlético Madrid – Real Madrid
+2025-03-12 | europe-uefa-champions-league | Arsenal – PSV
+2025-03-13 | europe-uefa-europa-conference-league | Cercle Brugge – Jagiellonia Białystok
+2025-03-13 | europe-uefa-europa-conference-league | Lugano – Celje
+2025-03-13 | europe-uefa-europa-conference-league | Rapid Wien – Borac Banja Luka
+2025-03-13 | europe-uefa-europa-conference-league | Djurgården – Paphos
+2025-03-13 | europe-uefa-europa-conference-league | Vitória Guimarães – Real Betis
+2025-03-13 | europe-uefa-europa-conference-league | Fiorentina – Panathinaikos
+2025-03-13 | europe-uefa-europa-conference-league | Legia Warszawa – Molde
+2025-03-13 | europe-uefa-europa-conference-league | Chelsea – København
+2025-03-13 | europe-uefa-europa-league | Lazio – Viktoria Plzeň
+2025-03-13 | europe-uefa-europa-league | Olympiakos Piraeus – FK Bodo - Glimt
+2025-03-13 | europe-uefa-europa-league | Eintracht Frankfurt – Ajax
+2025-03-13 | europe-uefa-europa-league | Athletic Club Bilbao – Roma
+2025-03-13 | europe-uefa-europa-league | Tottenham Hotspur – AZ
+2025-03-13 | europe-uefa-europa-league | Rangers – Fenerbahçe
+2025-03-13 | europe-uefa-europa-league | Olympique Lyonnais – FCSB
+2025-03-13 | europe-uefa-europa-league | Manchester United – Real Sociedad
+2025-03-07 | italy-serie-a | Cagliari – Genoa
+2025-03-08 | italy-serie-a | Como – Venezia
+2025-03-08 | italy-serie-a | Parma – Torino
+2025-03-08 | italy-serie-a | Lecce – AC Milan
+2025-03-08 | italy-serie-a | Inter Milan – Monza
+2025-03-09 | italy-serie-a | Hellas Verona – Bologna
+2025-03-09 | italy-serie-a | Napoli – Fiorentina
+2025-03-09 | italy-serie-a | Empoli – Roma
+2025-03-09 | italy-serie-a | Juventus – Atalanta
+2025-03-10 | italy-serie-a | Lazio – Udinese
+2025-03-07 | belgium-pro-league | Sint-Truiden – Beerschot-Wilrijk
+2025-03-08 | belgium-pro-league | KV Kortrijk – OH Leuven
+2025-04-19 | belgium-pro-league | Sporting Charleroi – KV Mechelen
+2025-03-08 | belgium-pro-league | FCV Dender EH – KRC Genk
+2025-03-09 | belgium-pro-league | Cercle Brugge – Club Brugge
+2025-03-09 | belgium-pro-league | KVC Westerlo – RSC Anderlecht
+2025-04-13 | belgium-pro-league | Royal Antwerp FC – KAA Gent
+2025-03-09 | belgium-pro-league | Union Saint-Gilloise – Standard Liège
+2025-03-08 | turkey-1-lig | 76 Iğdır Belediyespor – Şanlıurfaspor
+2025-03-08 | turkey-1-lig | Erokspor – Manisa BBSK
+2025-03-09 | turkey-1-lig | Yeni Malatyaspor – Ümraniyespor
+2025-03-09 | turkey-1-lig | Adanaspor – Fatih Karagümrük
+2025-03-09 | turkey-1-lig | Gençlerbirliği – Çorum Belediyespor
+2025-03-09 | turkey-1-lig | Sakaryaspor – Bandırmaspor
+2025-03-10 | turkey-1-lig | Keçiörengücü – BB Erzurumspor
+2025-03-10 | turkey-1-lig | Boluspor – İstanbulspor
+2025-03-10 | turkey-1-lig | Pendikspor – Amed
+2025-03-10 | turkey-1-lig | Kocaelispor – Ankaragücü
+2025-03-07 | turkey-super-lig | BB Bodrumspor – Kasımpaşa
+2025-03-08 | turkey-super-lig | Kayserispor – İstanbul Başakşehir
+2025-03-08 | turkey-super-lig | Antalyaspor – Rizespor
+2025-03-08 | turkey-super-lig | Trabzonspor – Hatayspor
+2025-03-09 | turkey-super-lig | Sivasspor – Göztepe
+2025-03-09 | turkey-super-lig | Samsunspor – Adana Demirspor
+2025-03-09 | turkey-super-lig | Eyüpspor – Konyaspor
+2025-03-09 | turkey-super-lig | Alanyaspor – Galatasaray
+2025-03-10 | turkey-super-lig | Beşiktaş – Gazişehir Gaziantep
+2025-03-07 | netherlands-eredivisie | NAC Breda – Sparta Rotterdam
+2025-03-08 | netherlands-eredivisie | Fortuna Sittard – Heracles
+2025-04-02 | netherlands-eredivisie | Feyenoord – Groningen
+2025-03-08 | netherlands-eredivisie | PSV – Heerenveen
+2025-03-09 | netherlands-eredivisie | Willem II – Utrecht
+2025-03-09 | netherlands-eredivisie | NEC – Go Ahead Eagles
+2025-03-09 | netherlands-eredivisie | PEC Zwolle – Ajax
+2025-04-01 | netherlands-eredivisie | AZ – RKC Waalwijk
+2025-03-09 | netherlands-eredivisie | Twente – Almere City
+2025-03-14 | germany-2-bundesliga | Schalke 04 – Hannover 96
+2025-03-14 | germany-2-bundesliga | Magdeburg – Hamburger SV
+2025-03-15 | germany-2-bundesliga | Fortuna Düsseldorf – Jahn Regensburg
+2025-03-15 | germany-2-bundesliga | Paderborn – Kaiserslautern
+2025-03-15 | germany-2-bundesliga | Elversberg – Preußen Münster
+2025-03-15 | germany-2-bundesliga | Köln – Darmstadt 98
+2025-03-16 | germany-2-bundesliga | Karlsruher SC – Ulm
+2025-03-16 | germany-2-bundesliga | Nürnberg – Greuther Fürth
+2025-03-16 | germany-2-bundesliga | Eintracht Braunschweig – Hertha BSC
+2025-03-14 | germany-bundesliga | St. Pauli – Hoffenheim
+2025-03-15 | germany-bundesliga | Werder Bremen – Borussia M'gladbach
+2025-03-15 | germany-bundesliga | Augsburg – Wolfsburg
+2025-03-15 | germany-bundesliga | Mainz 05 – Freiburg
+2025-03-15 | germany-bundesliga | Union Berlin – Bayern München
+2025-03-15 | germany-bundesliga | RB Leipzig – Borussia Dortmund
+2025-03-16 | germany-bundesliga | Bochum – Eintracht Frankfurt
+2025-03-16 | germany-bundesliga | Heidenheim – Holstein Kiel
+2025-03-16 | germany-bundesliga | Stuttgart – Bayer Leverkusen
+2025-03-14 | italy-serie-a | Genoa – Lecce
+2025-03-15 | italy-serie-a | Monza – Parma
+2025-03-15 | italy-serie-a | Udinese – Hellas Verona
+2025-03-15 | italy-serie-a | AC Milan – Como
+2025-03-15 | italy-serie-a | Torino – Empoli
+2025-03-16 | italy-serie-a | Venezia – Napoli
+2025-03-16 | italy-serie-a | Bologna – Lazio
+2025-03-16 | italy-serie-a | Roma – Cagliari
+2025-03-16 | italy-serie-a | Fiorentina – Juventus
+2025-03-16 | italy-serie-a | Atalanta – Inter Milan
+2025-03-14 | france-ligue-1 | Nice – Auxerre
+2025-03-15 | france-ligue-1 | Nantes – Lille
+2025-03-15 | france-ligue-1 | Angers SCO – Monaco
+2025-03-15 | france-ligue-1 | Lens – Rennes
+2025-03-16 | france-ligue-1 | Olympique Lyonnais – Le Havre
+2025-03-16 | france-ligue-1 | Montpellier – Saint-Étienne
+2025-03-16 | france-ligue-1 | Brest – Reims
+2025-03-16 | france-ligue-1 | Strasbourg – Toulouse
+2025-03-16 | france-ligue-1 | PSG – Olympique Marseille
+2025-03-16 | belgium-pro-league | Club Brugge – Sporting Charleroi
+2025-03-16 | belgium-pro-league | RSC Anderlecht – Cercle Brugge
+2025-04-20 | belgium-pro-league | KRC Genk – Union Saint-Gilloise
+2025-03-16 | belgium-pro-league | KAA Gent – KV Kortrijk
+2025-03-16 | belgium-pro-league | Standard Liège – Royal Antwerp FC
+2025-03-16 | belgium-pro-league | Beerschot-Wilrijk – KVC Westerlo
+2025-03-16 | belgium-pro-league | OH Leuven – Sint-Truiden
+2025-04-04 | belgium-pro-league | KV Mechelen – FCV Dender EH
+2025-03-15 | england-premier-league | Everton – West Ham United
+2025-03-15 | england-premier-league | Ipswich Town – Nottingham Forest
+2025-03-15 | england-premier-league | Manchester City – Brighton & Hove Albion
+2025-03-15 | england-premier-league | Southampton – Wolverhampton Wanderers
+2025-03-15 | england-premier-league | AFC Bournemouth – Brentford
+2025-03-16 | england-premier-league | Arsenal – Chelsea
+2025-03-16 | england-premier-league | Fulham – Tottenham Hotspur
+2025-03-16 | england-premier-league | Leicester City – Manchester United
+2025-03-14 | netherlands-eredivisie | Almere City – NAC Breda
+2025-03-15 | netherlands-eredivisie | Utrecht – NEC
+2025-03-15 | netherlands-eredivisie | Sparta Rotterdam – PEC Zwolle
+2025-03-15 | netherlands-eredivisie | RKC Waalwijk – PSV
+2025-03-15 | netherlands-eredivisie | Heerenveen – Heracles
+2025-03-16 | netherlands-eredivisie | Go Ahead Eagles – Willem II
+2025-03-16 | netherlands-eredivisie | Groningen – Fortuna Sittard
+2025-03-16 | netherlands-eredivisie | Twente – Feyenoord
+2025-03-16 | netherlands-eredivisie | Ajax – AZ
+2025-03-15 | turkey-1-lig | Ümraniyespor – Boluspor
+2025-03-15 | turkey-1-lig | Ankaragücü – 76 Iğdır Belediyespor
+2025-03-16 | turkey-1-lig | İstanbulspor – Gençlerbirliği
+2025-03-14 | turkey-1-lig | Şanlıurfaspor – Erokspor
+2025-03-15 | turkey-1-lig | Manisa BBSK – Pendikspor
+2025-03-16 | turkey-1-lig | Çorum Belediyespor – Keçiörengücü
+2025-03-16 | turkey-1-lig | Amed – BB Erzurumspor
+2025-03-16 | turkey-1-lig | Fatih Karagümrük – Kocaelispor
+2025-03-14 | turkey-1-lig | Bandırmaspor – Adanaspor
+2025-03-15 | turkey-1-lig | Sakaryaspor – Yeni Malatyaspor
+2025-03-15 | turkey-super-lig | Gazişehir Gaziantep – Kayserispor
+2025-03-15 | turkey-super-lig | İstanbul Başakşehir – Trabzonspor
+2025-03-16 | turkey-super-lig | Göztepe – Eyüpspor
+2025-03-16 | turkey-super-lig | Rizespor – BB Bodrumspor
+2025-03-14 | turkey-super-lig | Galatasaray – Antalyaspor
+2025-03-16 | turkey-super-lig | Fenerbahçe – Samsunspor
+2025-03-15 | turkey-super-lig | Konyaspor – Beşiktaş
+2025-03-15 | turkey-super-lig | Kasımpaşa – Alanyaspor
+2025-03-16 | turkey-super-lig | Hatayspor – Sivasspor
+2025-03-16 | spain-la-liga | Atlético Madrid – FC Barcelona
+2025-03-15 | spain-la-liga | Girona FC – Valencia CF
+2025-03-16 | spain-la-liga | Rayo Vallecano – Real Sociedad
+2025-03-16 | spain-la-liga | Sevilla FC – Athletic Club Bilbao
+2025-03-16 | spain-la-liga | Leganés – Real Betis
+2025-03-15 | spain-la-liga | Real Valladolid – Celta de Vigo
+2025-03-16 | spain-la-liga | CA Osasuna – Getafe CF
+2025-03-15 | spain-la-liga | Villarreal – Real Madrid
+2025-03-14 | spain-la-liga | UD Las Palmas – Deportivo Alavés
+2025-03-15 | spain-la-liga | RCD Mallorca – RCD Espanyol
+2025-03-20 | international-uefa-nations-league | Turkey – Hungary
+2025-03-20 | international-uefa-nations-league | Armenia – Georgia
+2025-03-20 | international-uefa-nations-league | Ukraine – Belgium
+2025-03-20 | international-uefa-nations-league | Austria – Serbia
+2025-03-20 | international-uefa-nations-league | Greece – Scotland
+2025-03-20 | international-uefa-nations-league | Kosovo – Iceland
+2025-03-20 | international-uefa-nations-league | Bulgaria – Republic of Ireland
+2025-03-20 | international-uefa-nations-league | Slovakia – Slovenia
+2025-03-20 | international-uefa-nations-league | Netherlands – Spain
+2025-03-20 | international-uefa-nations-league | Croatia – France
+2025-03-20 | international-uefa-nations-league | Denmark – Portugal
+2025-03-20 | international-uefa-nations-league | Italy – Germany
+2025-03-23 | international-uefa-nations-league | Georgia – Armenia
+2025-03-23 | international-uefa-nations-league | Hungary – Turkey
+2025-03-23 | international-uefa-nations-league | Serbia – Austria
+2025-03-23 | international-uefa-nations-league | Scotland – Greece
+2025-03-23 | international-uefa-nations-league | Iceland – Kosovo
+2025-03-23 | international-uefa-nations-league | Slovenia – Slovakia
+2025-03-23 | international-uefa-nations-league | Belgium – Ukraine
+2025-03-23 | international-uefa-nations-league | Republic of Ireland – Bulgaria
+2025-03-23 | international-uefa-nations-league | Spain – Netherlands
+2025-03-23 | international-uefa-nations-league | France – Croatia
+2025-03-23 | international-uefa-nations-league | Portugal – Denmark
+2025-03-23 | international-uefa-nations-league | Germany – Italy
+2025-03-30 | italy-serie-a | Cagliari – Monza
+2025-03-29 | italy-serie-a | Como – Empoli
+2025-03-30 | italy-serie-a | Fiorentina – Atalanta
+2025-03-31 | italy-serie-a | Hellas Verona – Parma
+2025-03-30 | italy-serie-a | Inter Milan – Udinese
+2025-03-29 | italy-serie-a | Juventus – Genoa
+2025-03-31 | italy-serie-a | Lazio – Torino
+2025-03-29 | italy-serie-a | Lecce – Roma
+2025-03-30 | italy-serie-a | Napoli – AC Milan
+2025-03-29 | italy-serie-a | Venezia – Bologna
+2025-03-28 | germany-2-bundesliga | Hamburger SV – Elversberg
+2025-03-28 | germany-2-bundesliga | Ulm – Darmstadt 98
+2025-03-29 | germany-2-bundesliga | Hannover 96 – Magdeburg
+2025-03-29 | germany-2-bundesliga | Paderborn – Köln
+2025-03-29 | germany-2-bundesliga | Hertha BSC – Karlsruher SC
+2025-03-29 | germany-2-bundesliga | Kaiserslautern – Fortuna Düsseldorf
+2025-03-30 | germany-2-bundesliga | Greuther Fürth – Schalke 04
+2025-03-30 | germany-2-bundesliga | Preußen Münster – Eintracht Braunschweig
+2025-03-30 | germany-2-bundesliga | Jahn Regensburg – Nürnberg
+2025-04-05 | germany-2-bundesliga | Köln – Hertha BSC
+2025-04-05 | germany-2-bundesliga | Darmstadt 98 – Greuther Fürth
+2025-04-05 | germany-2-bundesliga | Fortuna Düsseldorf – Preußen Münster
+2025-04-04 | germany-2-bundesliga | Karlsruher SC – Hannover 96
+2025-04-06 | germany-2-bundesliga | Schalke 04 – Ulm
+2025-04-06 | germany-2-bundesliga | Elversberg – Jahn Regensburg
+2025-04-05 | germany-2-bundesliga | Nürnberg – Hamburger SV
+2025-04-06 | germany-2-bundesliga | Magdeburg – Kaiserslautern
+2025-04-04 | germany-2-bundesliga | Eintracht Braunschweig – Paderborn
+2025-03-28 | germany-bundesliga | Bayer Leverkusen – Bochum
+2025-03-29 | germany-bundesliga | Bayern München – St. Pauli
+2025-03-29 | germany-bundesliga | Hoffenheim – Augsburg
+2025-03-29 | germany-bundesliga | Wolfsburg – Heidenheim
+2025-03-29 | germany-bundesliga | Borussia M'gladbach – RB Leipzig
+2025-03-29 | germany-bundesliga | Holstein Kiel – Werder Bremen
+2025-03-29 | germany-bundesliga | Eintracht Frankfurt – Stuttgart
+2025-03-30 | germany-bundesliga | Freiburg – Union Berlin
+2025-03-30 | germany-bundesliga | Borussia Dortmund – Mainz 05
+2025-04-05 | germany-bundesliga | RB Leipzig – Hoffenheim
+2025-04-05 | germany-bundesliga | Heidenheim – Bayer Leverkusen
+2025-04-05 | germany-bundesliga | Werder Bremen – Eintracht Frankfurt
+2025-04-05 | germany-bundesliga | Freiburg – Borussia Dortmund
+2025-04-04 | germany-bundesliga | Augsburg – Bayern München
+2025-04-05 | germany-bundesliga | Mainz 05 – Holstein Kiel
+2025-04-06 | germany-bundesliga | Union Berlin – Wolfsburg
+2025-04-05 | germany-bundesliga | Bochum – Stuttgart
+2025-04-06 | germany-bundesliga | St. Pauli – Borussia M'gladbach
+2025-03-29 | spain-la-liga | Athletic Club Bilbao – CA Osasuna
+2025-03-29 | spain-la-liga | FC Barcelona – Girona FC
+2025-03-29 | spain-la-liga | Real Betis – Sevilla FC
+2025-03-29 | spain-la-liga | Celta de Vigo – UD Las Palmas
+2025-03-29 | spain-la-liga | Getafe CF – Villarreal
+2025-03-29 | spain-la-liga | Real Sociedad – Real Valladolid
+2025-03-29 | spain-la-liga | Deportivo Alavés – Rayo Vallecano
+2025-03-29 | spain-la-liga | Valencia CF – RCD Mallorca
+2025-03-29 | spain-la-liga | Real Madrid – Leganés
+2025-03-29 | spain-la-liga | RCD Espanyol – Atlético Madrid
+2025-03-29 | turkey-1-lig | Gençlerbirliği – Şanlıurfaspor
+2025-03-29 | turkey-1-lig | 76 Iğdır Belediyespor – Ümraniyespor
+2025-03-29 | turkey-1-lig | Erokspor – Ankaragücü
+2025-03-29 | turkey-1-lig | Adanaspor – İstanbulspor
+2025-03-29 | turkey-1-lig | Yeni Malatyaspor – Fatih Karagümrük
+2025-03-29 | turkey-1-lig | Boluspor – Bandırmaspor
+2025-03-29 | turkey-1-lig | Kocaelispor – Sakaryaspor
+2025-03-29 | turkey-1-lig | BB Erzurumspor – Manisa BBSK
+2025-03-29 | turkey-1-lig | Keçiörengücü – Amed
+2025-03-29 | turkey-1-lig | Pendikspor – Çorum Belediyespor
+2025-03-29 | turkey-super-lig | Sivasspor – Adana Demirspor
+2025-03-29 | turkey-super-lig | Beşiktaş – Galatasaray
+2025-03-29 | turkey-super-lig | Antalyaspor – Alanyaspor
+2025-03-29 | turkey-super-lig | Kayserispor – Hatayspor
+2025-03-29 | turkey-super-lig | Konyaspor – Gazişehir Gaziantep
+2025-03-29 | turkey-super-lig | Trabzonspor – Göztepe
+2025-03-29 | turkey-super-lig | Samsunspor – Kasımpaşa
+2025-03-29 | turkey-super-lig | BB Bodrumspor – Fenerbahçe
+2025-03-30 | france-ligue-1 | Angers SCO – Rennes
+2025-03-30 | france-ligue-1 | Auxerre – Montpellier
+2025-03-30 | france-ligue-1 | Le Havre – Nantes
+2025-03-28 | france-ligue-1 | Strasbourg – Olympique Lyonnais
+2025-03-30 | france-ligue-1 | Toulouse – Brest
+2025-03-29 | france-ligue-1 | Saint-Étienne – PSG
+2025-03-29 | france-ligue-1 | Reims – Olympique Marseille
+2025-03-30 | france-ligue-1 | Lille – Lens
+2025-03-29 | france-ligue-1 | Monaco – Nice
+2025-04-01 | england-premier-league | AFC Bournemouth – Ipswich Town
+2025-04-01 | england-premier-league | Arsenal – Fulham
+2025-04-01 | england-premier-league | Brighton & Hove Albion – Aston Villa
+2025-04-01 | england-premier-league | Nottingham Forest – Manchester United
+2025-04-01 | england-premier-league | Wolverhampton Wanderers – West Ham United
+2025-04-03 | england-premier-league | Chelsea – Tottenham Hotspur
+2025-04-02 | england-premier-league | Manchester City – Leicester City
+2025-04-02 | england-premier-league | Newcastle United – Brentford
+2025-04-02 | england-premier-league | Southampton – Crystal Palace
+2025-04-02 | england-premier-league | Liverpool – Everton
+2025-03-29 | netherlands-eredivisie | NAC Breda – Groningen
+2025-03-29 | netherlands-eredivisie | Fortuna Sittard – Sparta Rotterdam
+2025-03-29 | netherlands-eredivisie | Willem II – Almere City
+2025-03-29 | netherlands-eredivisie | NEC – AZ
+2025-03-29 | netherlands-eredivisie | PEC Zwolle – RKC Waalwijk
+2025-03-30 | netherlands-eredivisie | Utrecht – Heerenveen
+2025-03-30 | netherlands-eredivisie | Heracles – Twente
+2025-03-30 | netherlands-eredivisie | PSV – Ajax
+2025-03-30 | netherlands-eredivisie | Feyenoord – Go Ahead Eagles
+2025-04-04 | netherlands-eredivisie | Heerenveen – Willem II
+2025-04-10 | europe-uefa-europa-league | FK Bodo - Glimt – Lazio
+2025-04-10 | europe-uefa-europa-league | Tottenham Hotspur – Eintracht Frankfurt
+2025-04-10 | europe-uefa-europa-league | Rangers – Athletic Club Bilbao
+2025-04-10 | europe-uefa-europa-league | Olympique Lyonnais – Manchester United
+2025-04-10 | europe-uefa-europa-conference-league | Legia Warszawa – Chelsea
+2025-04-10 | europe-uefa-europa-conference-league | Real Betis – Jagiellonia Białystok
+2025-04-10 | europe-uefa-europa-conference-league | Celje – Fiorentina
+2025-04-10 | europe-uefa-europa-conference-league | Djurgården – Rapid Wien
+2025-04-08 | europe-uefa-champions-league | Arsenal – Real Madrid
+2025-04-08 | europe-uefa-champions-league | Bayern München – Inter Milan
+2025-04-09 | europe-uefa-champions-league | PSG – Aston Villa
+2025-04-09 | europe-uefa-champions-league | FC Barcelona – Borussia Dortmund
+2025-04-05 | england-premier-league | Aston Villa – Nottingham Forest
+2025-04-06 | england-premier-league | Brentford – Chelsea
+2025-04-05 | england-premier-league | Crystal Palace – Brighton & Hove Albion
+2025-04-05 | england-premier-league | Everton – Arsenal
+2025-04-06 | england-premier-league | Fulham – Liverpool
+2025-04-05 | england-premier-league | Ipswich Town – Wolverhampton Wanderers
+2025-04-07 | england-premier-league | Leicester City – Newcastle United
+2025-04-06 | england-premier-league | Manchester United – Manchester City
+2025-04-06 | england-premier-league | Tottenham Hotspur – Southampton
+2025-04-05 | england-premier-league | West Ham United – AFC Bournemouth
+2025-04-11 | germany-2-bundesliga | Hamburger SV – Eintracht Braunschweig
+2025-04-12 | germany-2-bundesliga | Hannover 96 – Elversberg
+2025-04-13 | germany-2-bundesliga | Paderborn – Fortuna Düsseldorf
+2025-04-11 | germany-2-bundesliga | Greuther Fürth – Köln
+2025-04-12 | germany-2-bundesliga | Hertha BSC – Darmstadt 98
+2025-04-12 | germany-2-bundesliga | Kaiserslautern – Nürnberg
+2025-04-12 | germany-2-bundesliga | Ulm – Magdeburg
+2025-04-13 | germany-2-bundesliga | Preußen Münster – Karlsruher SC
+2025-04-13 | germany-2-bundesliga | Jahn Regensburg – Schalke 04
+2025-04-12 | germany-bundesliga | Bayer Leverkusen – Union Berlin
+2025-04-13 | germany-bundesliga | Stuttgart – Werder Bremen
+2025-04-12 | germany-bundesliga | Bayern München – Borussia Dortmund
+2025-04-13 | germany-bundesliga | Eintracht Frankfurt – Heidenheim
+2025-04-12 | germany-bundesliga | Hoffenheim – Mainz 05
+2025-04-11 | germany-bundesliga | Wolfsburg – RB Leipzig
+2025-04-12 | germany-bundesliga | Borussia M'gladbach – Freiburg
+2025-04-12 | germany-bundesliga | Bochum – Augsburg
+2025-04-12 | germany-bundesliga | Holstein Kiel – St. Pauli
+2025-04-04 | portugal-liga-nos | AVS – GD Estoril Praia
+2025-04-05 | portugal-liga-nos | FC Arouca – Famalicão
+2025-04-05 | portugal-liga-nos | Vitória Guimarães – Santa Clara
+2025-04-06 | portugal-liga-nos | Gil Vicente – Moreirense FC
+2025-04-06 | portugal-liga-nos | CD Nacional – Estrela Amadora
+2025-04-06 | portugal-liga-nos | Porto – Benfica
+2025-04-07 | portugal-liga-nos | Farense – Casa Pia
+2025-04-07 | portugal-liga-nos | Rio Ave FC – Boavista FC
+2025-04-07 | portugal-liga-nos | Sporting CP – Sporting Braga
+2025-04-11 | portugal-liga-nos | Gil Vicente – Vitória Guimarães
+2025-04-06 | italy-serie-a | Atalanta – Lazio
+2025-04-07 | italy-serie-a | Bologna – Napoli
+2025-04-06 | italy-serie-a | Empoli – Cagliari
+2025-04-04 | italy-serie-a | Genoa – Udinese
+2025-04-06 | italy-serie-a | Lecce – Venezia
+2025-04-05 | italy-serie-a | AC Milan – Fiorentina
+2025-04-05 | italy-serie-a | Monza – Como
+2025-04-05 | italy-serie-a | Parma – Inter Milan
+2025-04-06 | italy-serie-a | Roma – Juventus
+2025-04-06 | italy-serie-a | Torino – Hellas Verona
+2025-04-11 | italy-serie-a | Udinese – AC Milan
+2025-04-04 | turkey-1-lig | Şanlıurfaspor – Boluspor
+2025-04-04 | turkey-1-lig | Amed – 76 Iğdır Belediyespor
+2025-04-06 | turkey-1-lig | Ankaragücü – Gençlerbirliği
+2025-04-05 | turkey-1-lig | Çorum Belediyespor – Erokspor
+2025-04-06 | turkey-1-lig | Ümraniyespor – Pendikspor
+2025-04-05 | turkey-1-lig | Manisa BBSK – Keçiörengücü
+2025-04-05 | turkey-1-lig | Fatih Karagümrük – BB Erzurumspor
+2025-04-06 | turkey-1-lig | Bandırmaspor – Kocaelispor
+2025-04-05 | turkey-1-lig | Sakaryaspor – Adanaspor
+2025-04-04 | turkey-1-lig | İstanbulspor – Yeni Malatyaspor
+2025-04-08 | turkey-1-lig | Keçiörengücü – Şanlıurfaspor
+2025-04-10 | turkey-1-lig | Gençlerbirliği – Ümraniyespor
+2025-04-09 | turkey-1-lig | Pendikspor – Ankaragücü
+2025-04-08 | turkey-1-lig | 76 Iğdır Belediyespor – İstanbulspor
+2025-04-09 | turkey-1-lig | Erokspor – Fatih Karagümrük
+2025-04-10 | turkey-1-lig | Yeni Malatyaspor – Bandırmaspor
+2025-04-09 | turkey-1-lig | Boluspor – Sakaryaspor
+2025-04-10 | turkey-1-lig | Adanaspor – Kocaelispor
+2025-04-08 | turkey-1-lig | Manisa BBSK – Amed
+2025-04-09 | turkey-1-lig | BB Erzurumspor – Çorum Belediyespor
+2025-04-07 | turkey-super-lig | Göztepe – Gazişehir Gaziantep
+2025-04-05 | turkey-super-lig | İstanbul Başakşehir – Konyaspor
+2025-04-05 | turkey-super-lig | Rizespor – Sivasspor
+2025-04-06 | turkey-super-lig | Fenerbahçe – Trabzonspor
+2025-04-04 | turkey-super-lig | Adana Demirspor – Kayserispor
+2025-04-05 | turkey-super-lig | Antalyaspor – Samsunspor
+2025-04-06 | turkey-super-lig | Alanyaspor – BB Bodrumspor
+2025-04-07 | turkey-super-lig | Kasımpaşa – Beşiktaş
+2025-04-06 | turkey-super-lig | Hatayspor – Eyüpspor
+2025-04-05 | netherlands-eredivisie | AZ – Feyenoord
+2025-04-05 | netherlands-eredivisie | Twente – Fortuna Sittard
+2025-04-05 | netherlands-eredivisie | Groningen – PSV
+2025-04-05 | netherlands-eredivisie | Almere City – PEC Zwolle
+2025-04-06 | netherlands-eredivisie | RKC Waalwijk – Heracles
+2025-04-06 | netherlands-eredivisie | Go Ahead Eagles – Utrecht
+2025-04-06 | netherlands-eredivisie | Sparta Rotterdam – NEC
+2025-04-06 | netherlands-eredivisie | Ajax – NAC Breda
+2025-04-11 | netherlands-eredivisie | NEC – RKC Waalwijk
+2025-04-06 | france-ligue-1 | Olympique Marseille – Toulouse
+2025-04-04 | france-ligue-1 | Nice – Nantes
+2025-04-05 | france-ligue-1 | Brest – Monaco
+2025-04-06 | france-ligue-1 | Montpellier – Le Havre
+2025-04-05 | france-ligue-1 | Olympique Lyonnais – Lille
+2025-04-06 | france-ligue-1 | Lens – Saint-Étienne
+2025-04-05 | france-ligue-1 | PSG – Angers SCO
+2025-04-06 | france-ligue-1 | Reims – Strasbourg
+2025-04-06 | france-ligue-1 | Rennes – Auxerre
+2025-04-11 | france-ligue-1 | Lens – Reims
+2025-04-05 | belgium-pro-league | Cercle Brugge – Beerschot-Wilrijk
+2025-04-05 | belgium-pro-league | KVC Westerlo – OH Leuven
+2025-04-05 | belgium-pro-league | KAA Gent – Union Saint-Gilloise
+2025-04-06 | belgium-pro-league | Royal Antwerp FC – Club Brugge
+2025-04-06 | belgium-pro-league | RSC Anderlecht – KRC Genk
+2025-04-06 | belgium-pro-league | Sporting Charleroi – Standard Liège
+2025-04-11 | belgium-pro-league | KVC Westerlo – Sporting Charleroi
+2025-04-05 | spain-la-liga | FC Barcelona – Real Betis
+2025-04-05 | spain-la-liga | Real Madrid – Valencia CF
+2025-04-06 | spain-la-liga | UD Las Palmas – Real Sociedad
+2025-04-07 | spain-la-liga | Leganés – CA Osasuna
+2025-04-06 | spain-la-liga | Villarreal – Athletic Club Bilbao
+2025-04-06 | spain-la-liga | Sevilla FC – Atlético Madrid
+2025-04-05 | spain-la-liga | RCD Mallorca – Celta de Vigo
+2025-04-06 | spain-la-liga | Real Valladolid – Getafe CF
+2025-04-05 | spain-la-liga | Girona FC – Deportivo Alavés
+2025-04-04 | spain-la-liga | Rayo Vallecano – RCD Espanyol
+2025-04-11 | spain-la-liga | Valencia CF – Sevilla FC
+2025-04-12 | portugal-liga-nos | Boavista FC – CD Nacional
+2025-04-12 | portugal-liga-nos | Famalicão – GD Estoril Praia
+2025-04-12 | portugal-liga-nos | Santa Clara – Sporting CP
+2025-04-12 | portugal-liga-nos | Casa Pia – Porto
+2025-04-13 | portugal-liga-nos | Estrela Amadora – Farense
+2025-04-13 | portugal-liga-nos | Benfica – FC Arouca
+2025-04-13 | portugal-liga-nos | Sporting Braga – AVS
+2025-04-13 | portugal-liga-nos | Moreirense FC – Rio Ave FC
+2025-04-18 | portugal-liga-nos | Rio Ave FC – Santa Clara
+2025-04-18 | portugal-liga-nos | Farense – Boavista FC
+2025-04-18 | portugal-liga-nos | Porto – Famalicão
+2025-04-18 | portugal-liga-nos | Sporting CP – Moreirense FC
+2025-04-12 | belgium-pro-league | KV Kortrijk – Beerschot-Wilrijk
+2025-04-12 | belgium-pro-league | Sint-Truiden – Cercle Brugge
+2025-04-12 | belgium-pro-league | Union Saint-Gilloise – RSC Anderlecht
+2025-04-13 | belgium-pro-league | KV Mechelen – OH Leuven
+2025-04-13 | belgium-pro-league | Club Brugge – KRC Genk
+2025-04-13 | belgium-pro-league | FCV Dender EH – Standard Liège
+2025-04-14 | england-premier-league | AFC Bournemouth – Fulham
+2025-04-12 | england-premier-league | Arsenal – Brentford
+2025-04-12 | england-premier-league | Brighton & Hove Albion – Leicester City
+2025-04-13 | england-premier-league | Chelsea – Ipswich Town
+2025-04-13 | england-premier-league | Liverpool – West Ham United
+2025-04-12 | england-premier-league | Manchester City – Crystal Palace
+2025-04-13 | england-premier-league | Newcastle United – Manchester United
+2025-04-12 | england-premier-league | Nottingham Forest – Everton
+2025-04-12 | england-premier-league | Southampton – Aston Villa
+2025-04-13 | england-premier-league | Wolverhampton Wanderers – Tottenham Hotspur
+2025-04-16 | england-premier-league | Newcastle United – Crystal Palace
+2025-04-12 | netherlands-eredivisie | Fortuna Sittard – Feyenoord
+2025-04-12 | netherlands-eredivisie | Sparta Rotterdam – Heerenveen
+2025-04-12 | netherlands-eredivisie | PSV – Almere City
+2025-04-12 | netherlands-eredivisie | NAC Breda – Go Ahead Eagles
+2025-04-13 | netherlands-eredivisie | Utrecht – Groningen
+2025-04-13 | netherlands-eredivisie | Heracles – AZ
+2025-04-13 | netherlands-eredivisie | PEC Zwolle – Twente
+2025-04-13 | netherlands-eredivisie | Willem II – Ajax
+2025-04-17 | europe-uefa-europa-league | Lazio – FK Bodo - Glimt
+2025-04-17 | europe-uefa-europa-league | Eintracht Frankfurt – Tottenham Hotspur
+2025-04-17 | europe-uefa-europa-league | Athletic Club Bilbao – Rangers
+2025-04-17 | europe-uefa-europa-league | Manchester United – Olympique Lyonnais
+2025-04-17 | europe-uefa-europa-conference-league | Jagiellonia Białystok – Real Betis
+2025-04-17 | europe-uefa-europa-conference-league | Fiorentina – Celje
+2025-04-17 | europe-uefa-europa-conference-league | Chelsea – Legia Warszawa
+2025-04-17 | europe-uefa-europa-conference-league | Rapid Wien – Djurgården
+2025-04-15 | europe-uefa-champions-league | Aston Villa – PSG
+2025-04-15 | europe-uefa-champions-league | Borussia Dortmund – FC Barcelona
+2025-04-16 | europe-uefa-champions-league | Real Madrid – Arsenal
+2025-04-16 | europe-uefa-champions-league | Inter Milan – Bayern München
+2025-04-12 | france-ligue-1 | Toulouse – Lille
+2025-04-13 | france-ligue-1 | Le Havre – Rennes
+2025-04-13 | france-ligue-1 | Auxerre – Olympique Lyonnais
+2025-04-22 | france-ligue-1 | Nantes – PSG
+2025-04-12 | france-ligue-1 | Strasbourg – Nice
+2025-04-13 | france-ligue-1 | Saint-Étienne – Brest
+2025-04-13 | france-ligue-1 | Angers SCO – Montpellier
+2025-04-12 | france-ligue-1 | Monaco – Olympique Marseille
+2025-04-18 | france-ligue-1 | Rennes – Nantes
+2025-04-13 | turkey-1-lig | Ankaragücü – Boluspor
+2025-04-14 | turkey-1-lig | Bandırmaspor – 76 Iğdır Belediyespor
+2025-04-13 | turkey-1-lig | Fatih Karagümrük – Gençlerbirliği
+2025-04-14 | turkey-1-lig | Ümraniyespor – Erokspor
+2025-04-13 | turkey-1-lig | Sakaryaspor – Pendikspor
+2025-04-12 | turkey-1-lig | İstanbulspor – Keçiörengücü
+2025-04-14 | turkey-1-lig | Adanaspor – BB Erzurumspor
+2025-04-13 | turkey-1-lig | Çorum Belediyespor – Manisa BBSK
+2025-04-12 | turkey-1-lig | Şanlıurfaspor – Amed
+2025-04-14 | turkey-1-lig | Kocaelispor – Yeni Malatyaspor
+2025-04-13 | turkey-super-lig | Sivasspor – Fenerbahçe
+2025-04-12 | turkey-super-lig | Beşiktaş – İstanbul Başakşehir
+2025-04-13 | turkey-super-lig | Kayserispor – Kasımpaşa
+2025-04-12 | turkey-super-lig | Konyaspor – Göztepe
+2025-04-11 | turkey-super-lig | Samsunspor – Galatasaray
+2025-04-13 | turkey-super-lig | Trabzonspor – Rizespor
+2025-04-14 | turkey-super-lig | Eyüpspor – Adana Demirspor
+2025-04-13 | turkey-super-lig | Gazişehir Gaziantep – Hatayspor
+2025-04-12 | turkey-super-lig | BB Bodrumspor – Antalyaspor
+2025-04-18 | turkey-1-lig | Manisa BBSK – Ankaragücü
+2025-04-13 | spain-la-liga | Athletic Club Bilbao – Rayo Vallecano
+2025-04-14 | spain-la-liga | Atlético Madrid – Real Valladolid
+2025-04-13 | spain-la-liga | Real Betis – Villarreal
+2025-04-12 | spain-la-liga | Getafe CF – UD Las Palmas
+2025-04-13 | spain-la-liga | Deportivo Alavés – Real Madrid
+2025-04-12 | spain-la-liga | Leganés – FC Barcelona
+2025-04-13 | spain-la-liga | CA Osasuna – Girona FC
+2025-04-12 | spain-la-liga | Real Sociedad – RCD Mallorca
+2025-04-12 | spain-la-liga | Celta de Vigo – RCD Espanyol
+2025-04-18 | spain-la-liga | RCD Espanyol – Getafe CF
+2025-04-18 | germany-2-bundesliga | Köln – Preußen Münster
+2025-04-18 | germany-2-bundesliga | Darmstadt 98 – Hannover 96
+2025-04-18 | germany-2-bundesliga | Karlsruher SC – Greuther Fürth
+2025-04-18 | germany-2-bundesliga | Schalke 04 – Hamburger SV
+2025-04-18 | germany-2-bundesliga | Elversberg – Fortuna Düsseldorf
+2025-04-18 | germany-2-bundesliga | Nürnberg – Paderborn
+2025-04-18 | germany-2-bundesliga | Magdeburg – Jahn Regensburg
+2025-04-18 | germany-2-bundesliga | Eintracht Braunschweig – Kaiserslautern
+2025-04-18 | germany-2-bundesliga | Ulm – Hertha BSC
+2025-04-18 | germany-bundesliga | RB Leipzig – Holstein Kiel
+2025-04-18 | germany-bundesliga | Borussia Dortmund – Borussia M'gladbach
+2025-04-18 | germany-bundesliga | Heidenheim – Bayern München
+2025-04-18 | germany-bundesliga | Werder Bremen – Bochum
+2025-04-18 | germany-bundesliga | Freiburg – Hoffenheim
+2025-04-18 | germany-bundesliga | Augsburg – Eintracht Frankfurt
+2025-04-18 | germany-bundesliga | Mainz 05 – Wolfsburg
+2025-04-18 | germany-bundesliga | Union Berlin – Stuttgart
+2025-04-18 | germany-bundesliga | St. Pauli – Bayer Leverkusen
+2025-04-13 | italy-serie-a | Atalanta – Bologna
+2025-04-13 | italy-serie-a | Como – Torino
+2025-04-13 | italy-serie-a | Fiorentina – Parma
+2025-04-13 | italy-serie-a | Hellas Verona – Genoa
+2025-04-12 | italy-serie-a | Inter Milan – Cagliari
+2025-04-12 | italy-serie-a | Juventus – Lecce
+2025-04-13 | italy-serie-a | Lazio – Roma
+2025-04-14 | italy-serie-a | Napoli – Empoli
+2025-04-12 | italy-serie-a | Venezia – Monza
+2025-04-20 | italy-serie-a | Bologna – Inter Milan
+2025-04-21 | italy-serie-a | Cagliari – Fiorentina
+2025-04-20 | italy-serie-a | Empoli – Venezia
+2025-04-21 | italy-serie-a | Genoa – Lazio
+2025-04-19 | italy-serie-a | Lecce – Como
+2025-04-20 | italy-serie-a | AC Milan – Atalanta
+2025-04-19 | italy-serie-a | Monza – Napoli
+2025-04-21 | italy-serie-a | Parma – Juventus
+2025-04-19 | italy-serie-a | Roma – Hellas Verona
+2025-04-21 | italy-serie-a | Torino – Udinese
+2025-04-19 | spain-la-liga | FC Barcelona – Celta de Vigo
+2025-04-19 | spain-la-liga | Rayo Vallecano – Valencia CF
+2025-04-20 | spain-la-liga | Real Madrid – Athletic Club Bilbao
+2025-04-19 | spain-la-liga | UD Las Palmas – Atlético Madrid
+2025-04-21 | spain-la-liga | Girona FC – Real Betis
+2025-04-20 | spain-la-liga | Real Valladolid – CA Osasuna
+2025-04-20 | spain-la-liga | Villarreal – Real Sociedad
+2025-04-20 | spain-la-liga | Sevilla FC – Deportivo Alavés
+2025-04-19 | spain-la-liga | RCD Mallorca – Leganés
+2025-04-23 | spain-la-liga | Athletic Club Bilbao – UD Las Palmas
+2025-04-22 | spain-la-liga | Atlético Madrid – Rayo Vallecano
+2025-04-22 | spain-la-liga | FC Barcelona – RCD Mallorca
+2025-04-24 | spain-la-liga | Real Betis – Real Valladolid
+2025-04-23 | spain-la-liga | Celta de Vigo – Villarreal
+2025-04-23 | spain-la-liga | Getafe CF – Real Madrid
+2025-04-24 | spain-la-liga | CA Osasuna – Sevilla FC
+2025-04-23 | spain-la-liga | Deportivo Alavés – Real Sociedad
+2025-04-24 | spain-la-liga | Leganés – Girona FC
+2025-04-22 | spain-la-liga | Valencia CF – RCD Espanyol
+2025-04-20 | france-ligue-1 | Saint-Étienne – Olympique Lyonnais
+2025-04-20 | france-ligue-1 | Nice – Angers SCO
+2025-04-20 | france-ligue-1 | Brest – Lens
+2025-04-20 | france-ligue-1 | Lille – Auxerre
+2025-04-19 | france-ligue-1 | PSG – Le Havre
+2025-04-19 | france-ligue-1 | Olympique Marseille – Montpellier
+2025-04-20 | france-ligue-1 | Reims – Toulouse
+2025-04-19 | france-ligue-1 | Monaco – Strasbourg
+2025-04-25 | france-ligue-1 | PSG – Nice
+2025-04-19 | belgium-pro-league | OH Leuven – FCV Dender EH
+2025-04-19 | belgium-pro-league | Standard Liège – KVC Westerlo
+2025-04-20 | belgium-pro-league | RSC Anderlecht – Royal Antwerp FC
+2025-04-22 | belgium-pro-league | Standard Liège – OH Leuven
+2025-04-22 | belgium-pro-league | KV Mechelen – KVC Westerlo
+2025-04-22 | belgium-pro-league | FCV Dender EH – Sporting Charleroi
+2025-04-23 | belgium-pro-league | Royal Antwerp FC – KRC Genk
+2025-04-23 | belgium-pro-league | RSC Anderlecht – KAA Gent
+2025-04-24 | belgium-pro-league | Club Brugge – Union Saint-Gilloise
+2025-04-25 | belgium-pro-league | Beerschot-Wilrijk – KV Kortrijk
+2025-05-05 | netherlands-eredivisie | Heerenveen – Almere City
+2025-05-09 | netherlands-eredivisie | Willem II – Heracles
+2025-05-10 | netherlands-eredivisie | RKC Waalwijk – Heerenveen
+2025-05-10 | netherlands-eredivisie | Fortuna Sittard – NAC Breda
+2025-05-10 | netherlands-eredivisie | Almere City – Sparta Rotterdam
+2025-05-11 | netherlands-eredivisie | PEC Zwolle – Go Ahead Eagles
+2025-05-11 | netherlands-eredivisie | Twente – Utrecht
+2025-05-11 | netherlands-eredivisie | Feyenoord – PSV
+2025-05-11 | netherlands-eredivisie | Ajax – NEC
+2025-05-11 | netherlands-eredivisie | AZ – Groningen
+2025-05-11 | italy-serie-a | Atalanta – Roma
+2025-05-11 | italy-serie-a | Como – Cagliari
+2025-05-11 | italy-serie-a | Empoli – Parma
+2025-05-11 | italy-serie-a | Hellas Verona – Lecce
+2025-05-11 | italy-serie-a | Lazio – Juventus
+2025-05-11 | italy-serie-a | AC Milan – Bologna
+2025-05-11 | italy-serie-a | Napoli – Genoa
+2025-05-11 | italy-serie-a | Torino – Inter Milan
+2025-05-11 | italy-serie-a | Udinese – Monza
+2025-05-11 | italy-serie-a | Venezia – Fiorentina
+2025-05-05 | italy-serie-a | Genoa – AC Milan
+2025-05-10 | france-ligue-1 | Reims – Saint-Étienne
+2025-05-10 | france-ligue-1 | Auxerre – Nantes
+2025-05-10 | france-ligue-1 | Angers SCO – Strasbourg
+2025-05-10 | france-ligue-1 | Le Havre – Olympique Marseille
+2025-05-10 | france-ligue-1 | Rennes – Nice
+2025-05-10 | france-ligue-1 | Montpellier – PSG
+2025-05-10 | france-ligue-1 | Toulouse – Lens
+2025-05-10 | france-ligue-1 | Brest – Lille
+2025-05-10 | france-ligue-1 | Monaco – Olympique Lyonnais
+2025-05-09 | germany-2-bundesliga | Fortuna Düsseldorf – Schalke 04
+2025-05-09 | germany-2-bundesliga | Hamburger SV – Ulm
+2025-05-09 | germany-2-bundesliga | Hannover 96 – Greuther Fürth
+2025-05-09 | germany-2-bundesliga | Paderborn – Magdeburg
+2025-05-09 | germany-2-bundesliga | Elversberg – Eintracht Braunschweig
+2025-05-09 | germany-2-bundesliga | Nürnberg – Köln
+2025-05-09 | germany-2-bundesliga | Kaiserslautern – Darmstadt 98
+2025-05-09 | germany-2-bundesliga | Preußen Münster – Hertha BSC
+2025-05-09 | germany-2-bundesliga | Jahn Regensburg – Karlsruher SC
+2025-05-11 | germany-bundesliga | Bayer Leverkusen – Borussia Dortmund
+2025-05-11 | germany-bundesliga | Stuttgart – Augsburg
+2025-05-10 | germany-bundesliga | Bayern München – Borussia M'gladbach
+2025-05-11 | germany-bundesliga | Eintracht Frankfurt – St. Pauli
+2025-05-10 | germany-bundesliga | Werder Bremen – RB Leipzig
+2025-05-09 | germany-bundesliga | Wolfsburg – Hoffenheim
+2025-05-10 | germany-bundesliga | Union Berlin – Heidenheim
+2025-05-10 | germany-bundesliga | Bochum – Mainz 05
+2025-05-10 | germany-bundesliga | Holstein Kiel – Freiburg
+2025-05-09 | belgium-pro-league | Sporting Charleroi – KVC Westerlo
+2025-05-10 | belgium-pro-league | Beerschot-Wilrijk – Cercle Brugge
+2025-05-10 | belgium-pro-league | KV Kortrijk – Sint-Truiden
+2025-05-10 | belgium-pro-league | KV Mechelen – Standard Liège
+2025-05-10 | belgium-pro-league | RSC Anderlecht – Union Saint-Gilloise
+2025-05-11 | belgium-pro-league | KAA Gent – Royal Antwerp FC
+2025-05-11 | belgium-pro-league | KRC Genk – Club Brugge
+2025-05-11 | belgium-pro-league | FCV Dender EH – OH Leuven
+2025-05-10 | spain-la-liga | Atlético Madrid – Real Sociedad
+2025-05-11 | spain-la-liga | FC Barcelona – Real Madrid
+2025-05-11 | spain-la-liga | Real Betis – CA Osasuna
+2025-05-10 | spain-la-liga | Celta de Vigo – Sevilla FC
+2025-05-10 | spain-la-liga | Girona FC – Villarreal
+2025-05-10 | spain-la-liga | RCD Mallorca – Real Valladolid
+2025-05-10 | spain-la-liga | UD Las Palmas – Rayo Vallecano
+2025-05-10 | spain-la-liga | Valencia CF – Getafe CF
+2025-05-11 | spain-la-liga | Athletic Club Bilbao – Deportivo Alavés
+2025-05-11 | spain-la-liga | Leganés – RCD Espanyol
+2025-05-05 | spain-la-liga | Girona FC – RCD Mallorca
+2025-05-09 | turkey-1-lig | Adanaspor – Boluspor
+2025-05-09 | turkey-1-lig | Fatih Karagümrük – 76 Iğdır Belediyespor
+2025-05-09 | turkey-1-lig | Yeni Malatyaspor – Gençlerbirliği
+2025-05-09 | turkey-1-lig | Sakaryaspor – Erokspor
+2025-05-09 | turkey-1-lig | Bandırmaspor – Pendikspor
+2025-05-09 | turkey-1-lig | Kocaelispor – Keçiörengücü
+2025-05-09 | turkey-1-lig | Şanlıurfaspor – BB Erzurumspor
+2025-05-09 | turkey-1-lig | Ümraniyespor – Manisa BBSK
+2025-05-09 | turkey-1-lig | Ankaragücü – Amed
+2025-05-09 | turkey-1-lig | İstanbulspor – Çorum Belediyespor
+2025-05-11 | turkey-super-lig | Sivasspor – BB Bodrumspor
+2025-05-11 | turkey-super-lig | Beşiktaş – Adana Demirspor
+2025-05-12 | turkey-super-lig | Kayserispor – Antalyaspor
+2025-05-10 | turkey-super-lig | Konyaspor – Rizespor
+2025-05-14 | turkey-turkish-cup | Trabzonspor – Galatasaray
+2025-05-10 | turkey-super-lig | İstanbul Başakşehir – Fenerbahçe
+2025-05-10 | turkey-super-lig | Eyüpspor – Kasımpaşa
+2025-05-11 | turkey-super-lig | Göztepe – Hatayspor
+2025-05-10 | turkey-super-lig | Gazişehir Gaziantep – Alanyaspor
+2025-05-05 | turkey-super-lig | Kasımpaşa – Trabzonspor
+2025-05-05 | portugal-liga-nos | AVS – Boavista FC
+2025-05-10 | portugal-liga-nos | CD Nacional – Rio Ave FC
+2025-05-10 | portugal-liga-nos | Santa Clara – Famalicão
+2025-05-10 | portugal-liga-nos | Benfica – Sporting CP
+2025-05-10 | portugal-liga-nos | Gil Vicente – FC Arouca
+2025-05-10 | portugal-liga-nos | Casa Pia – Sporting Braga
+2025-05-11 | portugal-liga-nos | Estrela Amadora – AVS
+2025-05-11 | portugal-liga-nos | Vitória Guimarães – Farense
+2025-05-11 | portugal-liga-nos | Moreirense FC – GD Estoril Praia
+2025-05-11 | portugal-liga-nos | Boavista FC – Porto
+2025-05-10 | england-premier-league | AFC Bournemouth – Aston Villa
+2025-05-10 | england-premier-league | Fulham – Everton
+2025-05-10 | england-premier-league | Ipswich Town – Brentford
+2025-05-11 | england-premier-league | Liverpool – Arsenal
+2025-05-11 | england-premier-league | Manchester United – West Ham United
+2025-05-11 | england-premier-league | Newcastle United – Chelsea
+2025-05-11 | england-premier-league | Nottingham Forest – Leicester City
+2025-05-10 | england-premier-league | Southampton – Manchester City
+2025-05-11 | england-premier-league | Tottenham Hotspur – Crystal Palace
+2025-05-10 | england-premier-league | Wolverhampton Wanderers – Brighton & Hove Albion
+2025-05-05 | england-premier-league | Crystal Palace – Nottingham Forest
+2025-05-08 | europe-uefa-europa-league | FK Bodo - Glimt – Tottenham Hotspur
+2025-05-08 | europe-uefa-europa-league | Manchester United – Athletic Club Bilbao
+2025-05-08 | europe-uefa-europa-conference-league | Fiorentina – Real Betis
+2025-05-08 | europe-uefa-europa-conference-league | Chelsea – Djurgården
+2025-05-06 | europe-uefa-champions-league | Inter Milan – FC Barcelona
+2025-05-07 | europe-uefa-champions-league | PSG – Arsenal
+2025-05-14 | spain-la-liga | Deportivo Alavés – Valencia CF
+2025-05-15 | spain-la-liga | Getafe CF – Athletic Club Bilbao
+2025-05-15 | spain-la-liga | CA Osasuna – Atlético Madrid
+2025-05-15 | spain-la-liga | Rayo Vallecano – Real Betis
+2025-05-13 | spain-la-liga | Real Sociedad – Celta de Vigo
+2025-05-13 | spain-la-liga | Real Valladolid – Girona FC
+2025-05-14 | spain-la-liga | Real Madrid – RCD Mallorca
+2025-05-13 | spain-la-liga | Sevilla FC – UD Las Palmas
+2025-05-14 | spain-la-liga | Villarreal – Leganés
+2025-05-15 | spain-la-liga | RCD Espanyol – FC Barcelona
+2025-05-17 | spain-la-liga | Atlético Madrid – Real Betis
+2025-05-17 | spain-la-liga | FC Barcelona – Villarreal
+2025-05-17 | spain-la-liga | Celta de Vigo – Rayo Vallecano
+2025-05-17 | spain-la-liga | Valencia CF – Athletic Club Bilbao
+2025-05-17 | spain-la-liga | RCD Mallorca – Getafe CF
+2025-05-17 | spain-la-liga | Real Sociedad – Girona FC
+2025-05-17 | spain-la-liga | Sevilla FC – Real Madrid
+2025-05-17 | spain-la-liga | Real Valladolid – Deportivo Alavés
+2025-05-17 | spain-la-liga | UD Las Palmas – Leganés
+2025-05-17 | spain-la-liga | CA Osasuna – RCD Espanyol
+2025-05-16 | england-premier-league | Chelsea – Manchester United
+2025-05-17 | france-ligue-1 | Olympique Marseille – Rennes
+2025-05-17 | france-ligue-1 | Olympique Lyonnais – Angers SCO
+2025-05-17 | france-ligue-1 | Nice – Brest
+2025-05-17 | france-ligue-1 | Saint-Étienne – Toulouse
+2025-05-17 | france-ligue-1 | Lille – Reims
+2025-05-17 | france-ligue-1 | Strasbourg – Le Havre
+2025-05-17 | france-ligue-1 | Nantes – Montpellier
+2025-05-17 | france-ligue-1 | Lens – Monaco
+2025-05-17 | france-ligue-1 | PSG – Auxerre
+2025-05-17 | germany-bundesliga | RB Leipzig – Stuttgart
+2025-05-17 | germany-bundesliga | Borussia Dortmund – Holstein Kiel
+2025-05-17 | germany-bundesliga | Hoffenheim – Bayern München
+2025-05-17 | germany-bundesliga | Heidenheim – Werder Bremen
+2025-05-17 | germany-bundesliga | Freiburg – Eintracht Frankfurt
+2025-05-17 | germany-bundesliga | Augsburg – Union Berlin
+2025-05-17 | germany-bundesliga | Mainz 05 – Bayer Leverkusen
+2025-05-17 | germany-bundesliga | Borussia M'gladbach – Wolfsburg
+2025-05-17 | germany-bundesliga | St. Pauli – Bochum
+2025-05-16 | portugal-liga-nos | Farense – Santa Clara
+2025-05-16 | portugal-liga-nos | FC Arouca – Boavista FC
+2025-05-16 | portugal-liga-nos | AVS – Moreirense FC
+2025-05-16 | portugal-liga-nos | Porto – CD Nacional
+2025-05-16 | portugal-liga-nos | Famalicão – Casa Pia
+2025-05-16 | portugal-liga-nos | Sporting Braga – Benfica
+2025-05-16 | portugal-liga-nos | Sporting CP – Vitória Guimarães
+2025-05-16 | portugal-liga-nos | Rio Ave FC – Gil Vicente
+2025-05-16 | portugal-liga-nos | GD Estoril Praia – Estrela Amadora
+2025-05-14 | netherlands-eredivisie | Almere City – Fortuna Sittard
+2025-05-14 | netherlands-eredivisie | Groningen – Ajax
+2025-05-14 | netherlands-eredivisie | Twente – AZ
+2025-05-14 | netherlands-eredivisie | Utrecht – Sparta Rotterdam
+2025-05-14 | netherlands-eredivisie | Feyenoord – RKC Waalwijk
+2025-05-14 | netherlands-eredivisie | Go Ahead Eagles – Heerenveen
+2025-05-14 | netherlands-eredivisie | NEC – NAC Breda
+2025-05-14 | netherlands-eredivisie | PSV – Heracles
+2025-05-14 | netherlands-eredivisie | Willem II – PEC Zwolle
+2025-05-17 | turkey-super-lig | BB Bodrumspor – Trabzonspor
+2025-05-17 | turkey-super-lig | Galatasaray – Kayserispor
+2025-05-17 | turkey-super-lig | Rizespor – Göztepe
+2025-05-17 | turkey-super-lig | Samsunspor – Sivasspor
+2025-05-17 | turkey-super-lig | Adana Demirspor – Hatayspor
+2025-05-17 | turkey-super-lig | Antalyaspor – Gazişehir Gaziantep
+2025-05-17 | turkey-super-lig | Kasımpaşa – İstanbul Başakşehir
+2025-05-17 | turkey-super-lig | Alanyaspor – Beşiktaş
+2025-05-17 | turkey-super-lig | Fenerbahçe – Eyüpspor
+2025-05-17 | belgium-pro-league | Standard Liège – FCV Dender EH
+2025-05-17 | belgium-pro-league | Royal Antwerp FC – Union Saint-Gilloise
+2025-05-18 | germany-2-bundesliga | Köln – Kaiserslautern
+2025-05-18 | germany-2-bundesliga | Darmstadt 98 – Jahn Regensburg
+2025-05-18 | germany-2-bundesliga | Karlsruher SC – Paderborn
+2025-05-18 | germany-2-bundesliga | Greuther Fürth – Hamburger SV
+2025-05-18 | germany-2-bundesliga | Hertha BSC – Hannover 96
+2025-05-18 | germany-2-bundesliga | Schalke 04 – Elversberg
+2025-05-18 | germany-2-bundesliga | Magdeburg – Fortuna Düsseldorf
+2025-05-18 | germany-2-bundesliga | Eintracht Braunschweig – Nürnberg
+2025-05-18 | germany-2-bundesliga | Ulm – Preußen Münster
+2025-05-18 | italy-serie-a | Cagliari – Venezia
+2025-05-18 | italy-serie-a | Fiorentina – Bologna
+2025-05-18 | italy-serie-a | Genoa – Atalanta
+2025-05-18 | italy-serie-a | Hellas Verona – Como
+2025-05-18 | italy-serie-a | Inter Milan – Lazio
+2025-05-18 | italy-serie-a | Juventus – Udinese
+2025-05-18 | italy-serie-a | Lecce – Torino
+2025-05-18 | italy-serie-a | Monza – Empoli
+2025-05-18 | italy-serie-a | Parma – Napoli
+2025-05-18 | italy-serie-a | Roma – AC Milan
+2025-05-18 | netherlands-eredivisie | Ajax – Twente
+2025-05-18 | netherlands-eredivisie | AZ – Almere City
+2025-05-18 | netherlands-eredivisie | Fortuna Sittard – Utrecht
+2025-05-18 | netherlands-eredivisie | Heracles – NEC
+2025-05-18 | netherlands-eredivisie | NAC Breda – Willem II
+2025-05-18 | netherlands-eredivisie | PEC Zwolle – Groningen
+2025-05-18 | netherlands-eredivisie | RKC Waalwijk – Go Ahead Eagles
+2025-05-18 | netherlands-eredivisie | Heerenveen – Feyenoord
+2025-05-18 | netherlands-eredivisie | Sparta Rotterdam – PSV
+2025-05-18 | belgium-pro-league | RSC Anderlecht – Club Brugge
+2025-05-18 | belgium-pro-league | KV Mechelen – Sporting Charleroi
+2025-05-18 | belgium-pro-league | KAA Gent – KRC Genk
+2025-05-18 | england-premier-league | Arsenal – Newcastle United
+2025-05-18 | england-premier-league | Aston Villa – Tottenham Hotspur
+2025-05-18 | england-premier-league | Brentford – Fulham
+2025-05-19 | england-premier-league | Brighton & Hove Albion – Liverpool
+2025-05-18 | england-premier-league | Crystal Palace – Wolverhampton Wanderers
+2025-05-18 | england-premier-league | Everton – Southampton
+2025-05-18 | england-premier-league | Leicester City – Ipswich Town
+2025-05-18 | england-premier-league | Manchester City – AFC Bournemouth
+2025-05-18 | england-premier-league | West Ham United – Nottingham Forest

@@ -14,6 +14,9 @@ class MatchResult(models.Model):
     p_3plus= models.DecimalField(max_digits=5, decimal_places=2)
     date = models.CharField(max_length=15)
     time = models.CharField(max_length=5)
+    ft_homegoals=models.IntegerField(null=True)
+    ft_awaygoals=models.IntegerField(null=True)
+    
     scores_with_pct = models.JSONField()
     half_scores_with_pct = models.JSONField()
     match_result_with_pct = models.JSONField()
@@ -50,6 +53,8 @@ class MatchResult(models.Model):
             "p_3plus":float(self.p_3plus),
             "DATE": self.date,
             "TIME": self.time,
+            "FT_HOMESCORE":self.ft_homegoals,
+            "FT_AWAYSCORE":self.ft_awaygoals,
             "scores_with_pct": self.scores_with_pct,
             "half_scores_with_pct": self.half_scores_with_pct,
             "match_result_with_pct": self.match_result_with_pct,
@@ -66,6 +71,7 @@ class MatchResult(models.Model):
             "home_to_home_pct":self.home_to_home_pct,
             "away_to_home_pct":self.away_to_home_pct,
             "away_to_away_pct": self.away_to_away_pct,
+
 
         }
 
