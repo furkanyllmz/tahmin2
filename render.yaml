@@ -3,8 +3,8 @@ version: "1"
 
 services:
   - type: web
-    name: tahmin2        # Dashboard'da gözüken servis adıyla birebir eşleşmeli
-    env: python          # Burada runtime değil env kullanıyoruz
+    name: tahmin2        # Render dashboard’daki servis adı
+    env: python          # Python ortamı
     plan: starter
     repo: https://github.com/furkanyllmz/tahmin2
     envVars:
@@ -22,8 +22,8 @@ services:
     buildCommand: pip install -r requirements.txt && python manage.py collectstatic --no-post-process --noinput
     startCommand: gunicorn betapp.wsgi:application
 
-cron_jobs:
-  - name: skorupdate               # Cron job’un adı
-    service: tahmin2              # Yukarıdaki service.name ile birebir
-    schedule: "*/30 * * * *"      # Her 30 dakikada bir
+cronJobs:                # ← burası camelCase!
+  - name: skorupdate
+    service: tahmin2      # yukarıdaki service.name ile birebir eşleşmeli
+    schedule: "*/30 * * * *"
     command: "python manage.py skorupdate"
