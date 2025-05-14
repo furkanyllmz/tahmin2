@@ -3,10 +3,10 @@ version: "1"
 
 services:
   - type: web
-    name: tahmin2
-    runtime: python
-    repo: https://github.com/furkanyllmz/tahmin2
+    name: tahmin2        # Dashboard'da gözüken servis adıyla birebir eşleşmeli
+    env: python          # Burada runtime değil env kullanıyoruz
     plan: starter
+    repo: https://github.com/furkanyllmz/tahmin2
     envVars:
       - key: EMAIL_HOST_PASSWORD
         sync: false
@@ -21,13 +21,9 @@ services:
     region: oregon
     buildCommand: pip install -r requirements.txt && python manage.py collectstatic --no-post-process --noinput
     startCommand: gunicorn betapp.wsgi:application
-    domains:
-      - tahminai.com
-      - www.tahminai.com
-    autoDeployTrigger: commit
 
 cron_jobs:
-  - name: skorupdate
-    service: tahmin2
-    schedule: "*/30 * * * *"        # Her 30 dakikada bir
+  - name: skorupdate               # Cron job’un adı
+    service: tahmin2              # Yukarıdaki service.name ile birebir
+    schedule: "*/30 * * * *"      # Her 30 dakikada bir
     command: "python manage.py skorupdate"
