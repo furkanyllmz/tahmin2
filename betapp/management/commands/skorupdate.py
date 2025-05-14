@@ -112,7 +112,7 @@ class Command(BaseCommand):
         "Brighton & Hove Albion FC": "Brighton & Hove Albion",
         "Brentford FC": "Brentford",
         "West Ham United FC": "West Ham United",
-        "AFC Bournemouth": "AFC Bournemouth"
+        "AFC Bournemouth": "AFC Bournemouth",
         "FC Twente '65": "Twente",
         "Heracles Almelo": "Heracles",
         "Willem II Tilburg": "Willem II",
