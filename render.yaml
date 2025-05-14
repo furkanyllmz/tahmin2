@@ -1,7 +1,7 @@
 # render.yaml
 services:
   - type: web
-    name: betapp        # Dashboard'da gözüken servis adıyla birebir eşleşmeli
+    name: tahmin2        # Dashboard'da gözüken servis adıyla birebir eşleşmeli
     env: python         # veya docker olarak ayarladığın ortam
 
 cron_jobs:
