@@ -6,6 +6,6 @@ services:
 
 cron_jobs:
   - name: skorupdate
-    service: betapp     # yukarıda tanımladığın service.name
+    service: tahmin2     # yukarıda tanımladığın service.name
     schedule: "*/30 * * * *"
     command: "python manage.py skorupdate"
