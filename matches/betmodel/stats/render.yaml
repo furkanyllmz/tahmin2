@@ -1,0 +1,27 @@
+# Exported from Render on 2025-05-14T22:43:10Z
+services:
+- type: web
+  name: tahmin2
+  runtime: python
+  repo: https://github.com/furkanyllmz/tahmin2
+  plan: starter
+  envVars:
+  - key: EMAIL_HOST_PASSWORD
+    sync: false
+  - key: DEBUG
+    sync: false
+  - key: SECRET_KEY
+    sync: false
+  - key: EMAIL_HOST_USER
+    sync: false
+  - key: DJANGO_SETTINGS_MODULE
+    sync: false
+  region: oregon
+  buildCommand: pip install -r requirements.txt && python manage.py collectstatic
+    --no-post-process --noinput
+  startCommand: gunicorn betapp.wsgi:application
+  domains:
+  - tahminai.com
+  - www.tahminai.com
+  autoDeployTrigger: commit
+version: "1"

@@ -1,11 +1,33 @@
 # render.yaml
+# Exported from Render on 2025-05-14T22:43:10Z
+
 services:
   - type: web
-    name: tahmin2        # Dashboard'da gözüken servis adıyla birebir eşleşmeli
-    env: python         # veya docker olarak ayarladığın ortam
+    name: tahmin2
+    runtime: python
+    repo: https://github.com/furkanyllmz/tahmin2
+    plan: starter
+    envVars:
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
+      - key: DEBUG
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: DJANGO_SETTINGS_MODULE
+        sync: false
+    region: oregon
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --no-post-process --noinput
+    startCommand: gunicorn betapp.wsgi:application
+    domains:
+      - tahminai.com
+      - www.tahminai.com
+    autoDeployTrigger: commit
 
 cron_jobs:
   - name: skorupdate
-    service: tahmin2     # yukarıda tanımladığın service.name
-    schedule: "*/30 * * * *"
+    service: tahmin2
+    schedule: "*/30 * * * *"        # Her 30 dakikada bir
     command: "python manage.py skorupdate"
