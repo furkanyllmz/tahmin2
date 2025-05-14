@@ -1,31 +1,27 @@
 # render.yaml
-previewsEnabled: true  # istersen false da olabilir
+version: "1"
 
 services:
-  # 1) Ana web servisi
   - type: web
-    name: tahmin2               # Dashboard’da gözüken servis adı
-    runtime: python             # Docker kullanmıyorsan python
-    repo: https://github.com/furkanyllmz/tahmin2
+    name: tahmin2        # Render dashboard’daki servis adı
+    env: python          # Python ortamı
     plan: starter
-    region: oregon
-    rootDir: ./                  # manage.py’nin olduğu dizin
-    buildCommand: >
-      pip install -r requirements.txt &&
-      python manage.py collectstatic --no-post-process --noinput
-    startCommand: gunicorn betapp.wsgi:application
+    repo: https://github.com/furkanyllmz/tahmin2
     envVars:
-      - key: SECRET_KEY
-        fromDatabase: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
       - key: DEBUG
-        fromDatabase: false
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: EMAIL_HOST_USER
+        sync: false
       - key: DJANGO_SETTINGS_MODULE
-        fromDatabase: false
-      - key: RAPIDAPI_KEY          # senin API anahtarın
-        fromDatabase: false
-      # vs. diğer envVars'lar…
-
-  # 2) Yarım saatte bir tetiklenecek cron servisi
+        sync: false
+    region: oregon
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --no-post-process --noinput
+    startCommand: gunicorn betapp.wsgi:application
+    
   - type: cron
     name: skorupdate-cron        # dilediğin bir isim
     runtime: python
@@ -33,15 +29,4 @@ services:
     plan: starter
     region: oregon
     rootDir: ./                  # manage.py’nin olduğu dizin
-    schedule: "*/30 * * * *"     # her 30 dakikada bir
-    command: python manage.py skorupdate
-    envVars:
-      - key: SECRET_KEY
-        fromDatabase: false
-      - key: DEBUG
-        fromDatabase: false
-      - key: DJANGO_SETTINGS_MODULE
-        fromDatabase: false
-      - key: RAPIDAPI_KEY
-        fromDatabase: false
-      # web servisiyle aynı envVars’ları eklemelisin
+    schedule: "*/30 * * * *" 
