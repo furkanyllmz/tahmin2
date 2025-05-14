@@ -22,11 +22,23 @@ services:
     buildCommand: pip install -r requirements.txt && python manage.py collectstatic --no-post-process --noinput
     startCommand: gunicorn betapp.wsgi:application
     
+  # render.yaml (sadece cron kısmı)
+
   - type: cron
-    name: skorupdate-cron        # dilediğin bir isim
+    name: skorupdate-cron
     runtime: python
     repo: https://github.com/furkanyllmz/tahmin2
     plan: starter
     region: oregon
-    rootDir: ./                  # manage.py’nin olduğu dizin
-    schedule: "*/30 * * * *" 
+    rootDir: ./
+    schedule: "*/30 * * * *"
+    startCommand: python manage.py skorupdate   # <-- buraya dikkat
+    envVars:
+      - key: SECRET_KEY
+        fromDatabase: false
+      - key: DEBUG
+        fromDatabase: false
+      - key: DJANGO_SETTINGS_MODULE
+        fromDatabase: false
+      
+
