@@ -1,0 +1,6 @@
+# render.yaml
+cron_jobs:
+  - name: skorupdate       # İşin adı
+    service: betapp        # Sizin Web Service veya Worker servisin adı
+    schedule: "*/30 * * * *"  # Her 30 dakikada bir
+    command: "python manage.py skorupdate"
