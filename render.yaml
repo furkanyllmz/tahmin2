@@ -35,10 +35,10 @@ services:
     startCommand: python manage.py skorupdate   # <-- buraya dikkat
     envVars:
       - key: SECRET_KEY
-        fromDatabase: false
+        
       - key: DEBUG
-        fromDatabase: false
+        
       - key: DJANGO_SETTINGS_MODULE
-        fromDatabase: false
+        
       
 
