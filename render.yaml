@@ -1,29 +1,47 @@
 # render.yaml
-version: "1"
+previewsEnabled: true  # istersen false da olabilir
 
 services:
+  # 1) Ana web servisi
   - type: web
-    name: tahmin2        # Render dashboard’daki servis adı
-    env: python          # Python ortamı
-    plan: starter
+    name: tahmin2               # Dashboard’da gözüken servis adı
+    runtime: python             # Docker kullanmıyorsan python
     repo: https://github.com/furkanyllmz/tahmin2
-    envVars:
-      - key: EMAIL_HOST_PASSWORD
-        sync: false
-      - key: DEBUG
-        sync: false
-      - key: SECRET_KEY
-        sync: false
-      - key: EMAIL_HOST_USER
-        sync: false
-      - key: DJANGO_SETTINGS_MODULE
-        sync: false
+    plan: starter
     region: oregon
-    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --no-post-process --noinput
+    rootDir: ./                  # manage.py’nin olduğu dizin
+    buildCommand: >
+      pip install -r requirements.txt &&
+      python manage.py collectstatic --no-post-process --noinput
     startCommand: gunicorn betapp.wsgi:application
+    envVars:
+      - key: SECRET_KEY
+        fromDatabase: false
+      - key: DEBUG
+        fromDatabase: false
+      - key: DJANGO_SETTINGS_MODULE
+        fromDatabase: false
+      - key: RAPIDAPI_KEY          # senin API anahtarın
+        fromDatabase: false
+      # vs. diğer envVars'lar…
 
-cronJobs:                # ← burası camelCase!
-  - name: skorupdate
-    service: tahmin2      # yukarıdaki service.name ile birebir eşleşmeli
-    schedule: "*/30 * * * *"
-    command: "python manage.py skorupdate"
+  # 2) Yarım saatte bir tetiklenecek cron servisi
+  - type: cron
+    name: skorupdate-cron        # dilediğin bir isim
+    runtime: python
+    repo: https://github.com/furkanyllmz/tahmin2
+    plan: starter
+    region: oregon
+    rootDir: ./                  # manage.py’nin olduğu dizin
+    schedule: "*/30 * * * *"     # her 30 dakikada bir
+    command: python manage.py skorupdate
+    envVars:
+      - key: SECRET_KEY
+        fromDatabase: false
+      - key: DEBUG
+        fromDatabase: false
+      - key: DJANGO_SETTINGS_MODULE
+        fromDatabase: false
+      - key: RAPIDAPI_KEY
+        fromDatabase: false
+      # web servisiyle aynı envVars’ları eklemelisin
