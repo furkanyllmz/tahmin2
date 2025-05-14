@@ -32,13 +32,15 @@ services:
     region: oregon
     rootDir: ./
     schedule: "*/30 * * * *"
-    startCommand: python manage.py skorupdate   # <-- buraya dikkat
+    startCommand: python manage.py skorupdate
     envVars:
       - key: SECRET_KEY
-        
+        value: "<django-secret-key>"
       - key: DEBUG
-        
+        value: "False"
       - key: DJANGO_SETTINGS_MODULE
+        value: "betapp.settings"
+      
         
       
 
