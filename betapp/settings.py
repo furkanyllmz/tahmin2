@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'betapp',
     'rest_framework',
     'matches',
+    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -84,6 +85,10 @@ ROOT_URLCONF = 'betapp.urls'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
+RONJOBS = [
+    # her 30 dakikada bir skorupdate komutunu çalıştır
+    ("*/30 * * * *", "betapp.management.commands.skorupdate.Command.handle")
+]
 
 TEMPLATES = [
     {

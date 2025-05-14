@@ -38,7 +38,7 @@ class Command(BaseCommand):
         "Getafe CF":"Getafe CF",
         "Real Madrid CF":"Real Madrid",
         "Rayo Vallecano de Madrid":"Rayo Vallecano",
-        "RCD Mallorca":"Mallorca",
+        "RCD Mallorca":"RCD Mallorca",
         "Real Betis Balompié":"Real Betis",
         "Real Sociedad de Fútbol":"Real Sociedad",
         "Villarreal CF":"Villarreal",
