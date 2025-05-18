@@ -148,7 +148,7 @@ class Command(BaseCommand):
         url = "https://api.football-data.org/v4/matches"
         headers = {"X-Auth-Token": API_KEY}
         params = {
-            "dateFrom": today.isoformat(),
+            "dateFrom": yesterday.isoformat(),
             "dateTo":   tomorrow.isoformat(),
             "status":   "FINISHED"
         }
